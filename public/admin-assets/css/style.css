@@ -1,0 +1,178 @@
+/* ========================================================== */
+/* ===                     Dang Yen                       === */
+/* ===              March Fashion Dashboard               === */
+/* ========================================================== */
+
+
+/* ------------------------------- */
+/* [General CSS] */
+/* ------------------------------ */
+.form-group .form-control {
+    border-radius: .5rem !important;
+}
+
+input:focus,
+input.focus,
+input.active.focus,
+input.active:focus,
+input:active.focus,
+input:active:focus{
+  outline: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+.cl-black{
+    color: #000 !important;
+}
+
+.bg-black{
+    background-color: #000 !important;
+}
+
+.bg-orage{
+    background-color: orange !important;
+}
+
+.txt-right{
+    text-align: right;
+}
+
+.d-flex-right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.d-flex-center{
+    display: flex;
+    justify-content: center;
+}
+/* ------------------------------- */
+
+
+/* -------------------------------- */
+/* [Overide CSS] */
+/* ---------------------------- */
+body {
+    color: #333;
+    background: #000;
+}
+
+.title_left{
+    margin-bottom: 1rem;
+}
+
+.bg-trans{
+    background: transparent !important;
+}
+
+a#menu_toggle{
+    color: #666666 !important;
+}
+
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
+
+.btn-action{
+    margin-bottom: 0;
+    width: 24px;
+    height: auto;
+}
+
+.btn-success {
+    color: #fff;
+    background: #4dbd74;
+    border: 1px solid #4dbd74;
+}
+
+.btn-success:hover {
+    background-color: #3ea662;
+    border-color: #3a9d5d;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #63c2de;
+    border-color: #63c2de;
+}
+
+.btn-info:hover {
+    background-color: #43b6d7;
+    border-color: #39b2d5;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #f86c6b;
+    border-color: #f86c6b;
+}
+
+.btn-danger:hover {
+    background-color: #f64846;
+    border-color: #f63c3a;
+}
+
+/* -------------------------------- */
+
+
+
+/* ------------------------------ */
+/* [Login Page] */
+/* ----------------------------- */
+.login_content{
+    background-color: #ffffff;
+    border-radius: .2rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+    margin-bottom: 1.5rem;
+}
+
+.login_content input{
+    box-shadow: none !important;
+}
+
+.btn-login{
+    background-color: #444444;
+    padding: .75rem 1rem;
+    border-radius: .2rem;
+    font-style: none;
+    text-shadow: none;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active{
+    color: #ffffff;
+    background-color: #000000;
+    text-decoration: none !important;
+}
+
+
+/* ------------------------------ */
+
+
+/* -------------------------- */
+/* [Table CSS] */
+/* --------------------- */
+.admin-status-active span{
+    color: #fff;
+    font-size: 12px;
+    background-color: #4dbd74;
+    border-radius:.5rem;
+    padding: .3rem;
+}
+
+.admin-status-disabled span{
+    color: #fff;
+    font-size: 12px;
+    background-color: #999;
+    border-radius:.5rem;
+    padding: .3rem;
+}
+/* ----------------------- */
