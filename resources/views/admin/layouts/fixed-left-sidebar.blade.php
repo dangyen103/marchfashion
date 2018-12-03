@@ -24,7 +24,7 @@
         <br />
 
         <!-- sidebar menu -->
-        @include('admin.layout.sidebar-menu')
+        @include('admin.layouts.sidebar-menu')
         <!-- /sidebar menu -->
 
         <!-- /menu footer buttons -->

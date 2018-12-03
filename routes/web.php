@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,51 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-    return view('admin.user.user-add');
+
+    // $dist = array("Đông Anh","Cầu Giấy","Hoàng Mai","Ba Đình","Thanh Xuân");
+
+    // echo $dist[array_rand($dist, 1)];
+
+    // $u = User::where('level', 0)->inRandomOrder();
+    
+    return view('admin.user.user-list');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+//Admin
+Route::group(['prefix'=>'admin'], function(){
+
+	Route::get('', 'Admin\ProductController@getProductList');
+
+	Route::group(['prefix'=>'user'], function(){
+
+		Route::get('','Admin\UserController@getUserList');
+
+		Route::get('add','Admin\UserController@getAdminAdd');
+		Route::post('add','Admin\UserController@postAdminAdd');
+
+		Route::get("edit/{id}",'Admin\UserController@getAdminEdit');
+		Route::post("edit/{id}",'Admin\UserController@postAdminEdit');
+	});
+
+	Route::group(['prefix'=>'product'], function(){
+
+		Route::get('','Admin\ProductController@getProductList');
+
+		Route::get('add','Admin\ProductController@getProductAdd');
+		Route::post('add','Admin\ProductController@postProductAdd');
+
+		Route::get("edit/{id}",'Admin\ProductController@getProductEdit');
+		Route::post("edit/{id}",'Admin\ProductController@postProductEdit');
+
+		Route::get("delete/{id}",'Admin\ProductController@getProductDelete');
+	});
+
+
+});

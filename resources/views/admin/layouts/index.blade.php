@@ -37,11 +37,11 @@
     <div class="container body">
         <div class="main_container">
             <!-- left sidebar -->
-            @include('admin.layout.fixed-left-sidebar')
+            @include('admin.layouts.fixed-left-sidebar')
             <!-- /left sidbar -->
 
             <!-- top navigation -->
-            @include('admin.layout.top-navigation')
+            @include('admin.layouts.top-navigation')
             <!-- /top navigation -->
 
             <!-- page content -->

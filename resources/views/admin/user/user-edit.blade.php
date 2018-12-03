@@ -1,0 +1,136 @@
+@extends('admin.layouts.index')
+
+@section('content')
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Users <small> Thêm mới quản trị viên</small></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(session('alert-success'))
+                            <div class="alert alert-success">
+                                {{session('alert-success')}}
+                            </div>
+                        @endif
+
+                        <form class="form-horizontal form-label-left"
+                                action="{{ asset("admin/user/edit/$user->id") }}" 
+                                method="POST"
+                                enctype="multipart/form-data">
+
+                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" 
+                                        class="form-control" 
+                                        value="{{ $user->name }}"
+                                        placeholder="Nhập họ tên"
+                                        name="name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="email" 
+                                        class="form-control"
+                                        disabled="disabled" 
+                                        value="{{ $user->email }}"
+                                        name="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-12 control-label">Trạng thái
+                                    {{$user->admintrator['status']}}
+                                </label>
+
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                    @if ($user->adminitrator['status'] == 1)
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" checked name="status" value="1"> Hoạt động
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="status" value="0"> Vô hiệu hóa
+                                            </label>
+                                        </div>
+                                    @else
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="status" value="1"> Hoạt động
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" checked name="status" value="0"> Vô hiệu hóa
+                                            </label>
+                                        </div>
+                                    @endif
+                                    
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-12 control-label">Quyền
+                                </label>
+
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    
+                                    @foreach ($roles as $item)
+                                        <div class="checkbox">
+                                            @if (in_array($item->id, $admin_roles_arr))
+                                                <label>
+                                                    <input type="checkbox"
+                                                        value="{{ $item->id }}" checked
+                                                        name="roles[]"> {{ $item->name }}
+                                                </label>
+                                            @else
+                                                <label>
+                                                    <input type="checkbox"
+                                                        value="{{ $item->id }}" 
+                                                        name="roles[]"> {{ $item->name }}
+                                                </label>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                    <a href="{{ asset('admin/user') }}"" class="btn btn-danger">Hủy</a>
+                                    <button type="reset" class="btn btn-info">Làm lại</button>
+                                    <button type="submit" class="btn btn-success">Lưu</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
