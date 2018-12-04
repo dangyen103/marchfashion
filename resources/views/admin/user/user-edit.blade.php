@@ -5,7 +5,14 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Users <small> Thêm mới quản trị viên</small></h3>
+                <h3>Users <small> Chỉnh sửa quản trị viên</small></h3>
+            </div>
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="d-flex-right">
+                        <a href="{{ asset("admin/user") }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -15,7 +22,8 @@
                     <div class="x_content">
 
                         @if(count($errors)>0)
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 @foreach($errors->all() as $err)
                                     {{$err}}<br>
                                 @endforeach
@@ -23,7 +31,8 @@
                         @endif
 
                         @if(session('alert-success'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 {{session('alert-success')}}
                             </div>
                         @endif
@@ -58,7 +67,6 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 col-sm-3 col-xs-12 control-label">Trạng thái
-                                    {{$user->admintrator['status']}}
                                 </label>
 
                                 <div class="col-md-9 col-sm-9 col-xs-12">

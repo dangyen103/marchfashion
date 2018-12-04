@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Customer;
 use App\Adminitrator;
 use App\Role;
+use App\Mail\AdminPasswordMail;
+use Mail;
 
 class UserController extends Controller
 {
@@ -27,20 +31,14 @@ class UserController extends Controller
         $user_customers = User::where('level', 0)->get();
         $user_admins = User::where('level', 1)->get();
 
-        // foreach ($user_admins as $item) {
-        //     echo $item->name;
-        //     echo "------------";
-        //     foreach ($item->adminitrator->roles as $key) {
-        //         echo $key->name;
-        //         echo "------------";
-        //         echo $key->pivot->role_id;
-        //     }
-        //     echo "<br>";
-        // }
-
-        // return view('admin.login');
-
         return view('admin.user.user-list', compact('user_customers','user_admins'));
+    }
+
+    public function getUserDetail($id)
+    {
+        $user = User::find($id);
+
+        return view('admin.user.customer-detail', compact('user'));
     }
 
     public function getAdminAdd()
@@ -65,12 +63,13 @@ class UserController extends Controller
 
         $new_user = new User;
         $new_admin = new Adminitrator;
+        $user_password = str_random(8);
         
         //create new user
         $new_user->name = $request->name;
         $new_user->email = $request->email;
         $new_user->level = 1;
-        $new_user->password = str_random(8);
+        $new_user->password = Hash::make($user_password);
 
         //save user
         $new_user->save();
@@ -86,7 +85,11 @@ class UserController extends Controller
             $role->adminitrators()->attach($new_admin->id);
         }
 
-        return redirect('admin/user/add')->with('alert-success','Thêm thành công');
+        //send email
+        $email = new AdminPasswordMail($new_user->name, $user_password);
+        Mail::to($new_user->email)->send($email);
+
+        return redirect('admin/user/add')->with('alert-success','Thêm thành công!');
     }
 
     public function getAdminEdit($id)
@@ -130,6 +133,24 @@ class UserController extends Controller
         //edit records in pivot table
         $admin->roles()->sync($request->roles);
 
-        return redirect("admin/user/edit/$id")->with('alert-success','Sửa thành công');
+        return redirect("admin/user/edit/$id")->with('alert-success','Sửa thành công!');
+    }
+
+    public function getAdminDelete($id)
+    {
+        $u = User::find($id);
+        $u->delete();
+
+        return redirect('admin/user')->with('alert-success','Xóa thành công!');
+    }
+
+    public function getAdminChangePassword()
+    {
+        return view('admin.change-password');
+    }
+
+    public function postAdminChangePassword()
+    {
+        return view('admin.change-password');
     }
 }

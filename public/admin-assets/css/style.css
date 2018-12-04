@@ -45,6 +45,10 @@ input:active:focus{
     text-align: center;
 }
 
+.font-normal{
+    font-weight: normal !important;
+}
+
 .d-flex-right{
     display: flex;
     justify-content: flex-end;
@@ -127,6 +131,18 @@ a#menu_toggle{
 .btn-danger:focus {
     background-color: #f64846;
     border-color: #f63c3a;
+}
+
+.btn-dark{
+    color: #fff;
+    background-color: #444;
+    border-color: #333;
+}
+
+.btn-dark:hover{
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
 }
 
 /* -------------------------------- */

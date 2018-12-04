@@ -24,7 +24,7 @@ Route::get('test', function () {
 
     // $u = User::where('level', 0)->inRandomOrder();
     
-    return view('admin.user.user-list');
+    return view('mails.admin-password');
 });
 
 
@@ -39,15 +39,21 @@ Route::group(['prefix'=>'admin'], function(){
 
 	Route::get('', 'Admin\ProductController@getProductList');
 
+	Route::get('change-password','Admin\UserController@getAdminChangePassword');
+	Route::post('change-password','Admin\UserController@postAdminChangePassword');
+
 	Route::group(['prefix'=>'user'], function(){
 
 		Route::get('','Admin\UserController@getUserList');
+		Route::get("customer-detail/{id}",'Admin\UserController@getUserDetail');
 
 		Route::get('add','Admin\UserController@getAdminAdd');
 		Route::post('add','Admin\UserController@postAdminAdd');
 
 		Route::get("edit/{id}",'Admin\UserController@getAdminEdit');
 		Route::post("edit/{id}",'Admin\UserController@postAdminEdit');
+
+		Route::get("delete/{id}",'Admin\UserController@getAdminDelete');
 	});
 
 	Route::group(['prefix'=>'product'], function(){

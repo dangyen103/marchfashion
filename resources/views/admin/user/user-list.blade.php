@@ -28,6 +28,23 @@
                                 </li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
+
+                                @if(count($errors)>0)
+                                    <div class="alert alert-danger alert-dismissible fade in">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        @foreach($errors->all() as $err)
+                                            {{$err}}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
+        
+                                @if(session('alert-success'))
+                                    <div class="alert alert-success alert-dismissible fade in">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        {{session('alert-success')}}
+                                    </div>
+                                @endif
+
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                                     <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
@@ -59,7 +76,7 @@
                                                     <td class="txt-center">{{ $item->customer['city'] }}</td>
                                                     <td class="txt-center">{{ $item->customer['district'] }}</td>
                                                     <td class="txt-center">
-                                                        <a href="#" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
                                                         {{-- <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
@@ -113,12 +130,24 @@
                                                         {{-- <a href="#" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a> --}}
-                                                        <a href="{{ asset("admin/user/edit/$item->id") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/user/delete/$item->id") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+
+                                                        @if ($item->id == 1)
+                                                            <button class="btn btn-info btn-xs btn-action" disabled>
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-xs btn-action" disabled>
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </button>
+                                                        @else
+                                                            <a href="{{ asset("admin/user/edit/$item->id") }}" title="Chỉnh sửa" class="btn btn-info btn-xs btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/user/delete/$item->id") }}" title="Xóa" class="btn btn-danger btn-xs btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endif
+
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach
