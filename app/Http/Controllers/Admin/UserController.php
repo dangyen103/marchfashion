@@ -51,11 +51,12 @@ class UserController extends Controller
     {
         $this->validate($request,
         [
-            'name'=>'required',
+            'name'=>'required|max:100',
             'email' => 'required|unique:users,email'
         ],
         [
             'name.required' => 'Bạn chưa nhập tên',
+            'name.max' => 'Tên quá dài. Vui lòng nhập không quá 100 kí tự',
             'email.required' => 'Bạn chưa nhập email',
             'email.unique' =>'Email đã được sử dụng'
 

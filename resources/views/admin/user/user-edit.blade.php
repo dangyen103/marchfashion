@@ -45,7 +45,7 @@
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">* Họ tên</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" 
                                         class="form-control" 
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">* Email</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="email" 
                                         class="form-control"

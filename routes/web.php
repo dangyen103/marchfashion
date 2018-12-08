@@ -22,10 +22,24 @@ Route::get('test', function () {
 
     // echo $dist[array_rand($dist, 1)];
 
-    // $u = User::where('level', 0)->inRandomOrder();
-    
-    return view('mails.admin-password');
+	// $u = User::where('level', 0)->inRandomOrder();
+
+	// $date = getdate();
+
+	// $cur_year = $date['year'];
+	// $cur_month = date('m', strtotime($date['month']));
+
+	// echo $cur_month."<br>";
+	// echo $cur_year;
+	
+	
+	echo getdate()['year'];
+	echo date('m', strtotime(getdate()['month']));
+
+    return view('test');
 });
+
+Route::post('test', 'Admin\ProductController@test');
 
 
 Auth::routes();
@@ -59,6 +73,7 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'product'], function(){
 
 		Route::get('','Admin\ProductController@getProductList');
+		Route::get('{id}/{name}', 'Admin\ProductController@getProductDetail');
 
 		Route::get('add','Admin\ProductController@getProductAdd');
 		Route::post('add','Admin\ProductController@postProductAdd');

@@ -28,6 +28,9 @@
     <link href="{{ asset('admin-assets/libs/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-assets/libs/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
     
+    <!-- File Upload -->
+    <link href="{{ asset('admin-assets/css/file-upload.css') }}" rel="stylesheet" >
+
     <!-- Custom Theme Style -->
     <link href="{{ asset('admin-assets/build/css/custom.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-assets/css/style.css') }}" rel="stylesheet">
@@ -87,6 +90,10 @@
     <script src="{{ asset('admin-assets/libs/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+
+    <!-- File upload -->
+    <script src="{{ asset('admin-assets/js/file-upload.js') }}"></script>
+
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('admin-assets/build/js/custom.min.js') }}"></script>

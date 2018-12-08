@@ -3,7 +3,7 @@
         <div class="navbar nav_title bg-black" style="border: 0;">
             <a href="#" class="site_title bg-black">
                 <i class="bg-black"><img src="{{ asset('admin-assets/images/logo-icon.png') }}" alt="icon" width="26px"></i> 
-                <span> March Fashion</span>
+                <span style="margin-left: .5rem;"> March Fashion</span>
             </a>
         </div>
 
@@ -12,11 +12,11 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-            <img src="{{ asset('admin-assets/images/user.png') }}" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('admin-assets/images/user.png') }}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-            <span>Xin chào,</span>
-            <h2>Đặng Yến</h2>
+                <span>Xin chào,</span>
+                <h2>Đặng Yến</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->

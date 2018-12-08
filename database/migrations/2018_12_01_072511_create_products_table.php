@@ -19,9 +19,9 @@ class CreateProductsTable extends Migration
             $table->string('unsigned_name');
             $table->integer('category_id')->unsigned();
             $table->integer('price');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('label')->nullable();
-            $table->string('thumnail')->default('prod-none-img.jpg');
+            $table->string('thumbnail')->default('prod-none-img.jpg');
             $table->integer('view')->unsigned()->default(0);
             $table->timestamps();
 
