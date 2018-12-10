@@ -17,12 +17,13 @@
                 <i class="fa fa-cube"></i> Sản phẩm</a>
             </li>
 
-            <li><a><i class="fa fa-sort"></i> Set trang phục</span></a>
+            <li><a href="{{ asset("admin/set") }}">
+                <i class="fa fa-sort"></i> Set trang phục</span></a>
             </li>
 
             <li><a><i class="fa fa-list-alt"></i> Đơn hàng<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="#">Tất cả</a></li>
+                    <li><a href="{{ asset("admin/order") }}">Tất cả</a></li>
                     <li><a href="#">Chờ xác nhận</a></li>
                     <li><a href="#">Đang đóng gói</a></li>
                     <li><a href="#">Đang vận chuyển</a></li>
@@ -30,13 +31,13 @@
                 </ul>
             </li>
 
-            <li><a><i class="fa fa-tag"></i> Khuyến mại</span></a>
+            <li><a href="{{ asset("admin/disount") }}"><i class="fa fa-tag"></i> Khuyến mại</span></a>
             </li>
 
-            <li><a><i class="fa fa-newspaper-o"></i> Bài đăng</span></a>
+            <li><a href="{{ asset("admin/post") }}"><i class="fa fa-newspaper-o"></i> Bài đăng</span></a>
             </li>
 
-            <li><a><i class="fa fa-list-ul"></i> Danh mục sản phẩm</span></a>
+            <li><a href="{{ asset("admin/category") }}"><i class="fa fa-list-ul"></i> Danh mục sản phẩm</span></a>
             </li>
 
         </ul>

@@ -10,7 +10,7 @@
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="d-flex-right">
-                        <a href="{{ asset("admin/user") }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
+                        <a href="{{ url()->previous() }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
                     </div>
                 </div>
             </div>

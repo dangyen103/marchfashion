@@ -15,12 +15,28 @@ $('#datatable6').dataTable();
 
 
 // -------------------------------------------
-// Confirm password
+// Gallery
+// ------------------------------------
+function openGalleryImg(imgs) {
+    
+    var galleryImgView = document.getElementById("galleryImgView");
+    
+    galleryImgView.src = imgs.src;
+
+    galleryImgView.parentElement.style.display = "block";
+}
+// -------------------------------------
 
 
 // ------------------------------------
 // Add and removw row in Table
 // --------------------------------
+$( document ).ready(function() {
+    var rows = $('#detailProdTable tbody tr').length;
+    if( rows == 1) {
+        $('#removeTableRow').attr('style','background-color: #ccc; border-color: #ccc; cursor: not-allowed;');
+    }
+});
 
 // Add
 $( "#addTableRow" ).click(function() {
@@ -43,3 +59,67 @@ $('#removeTableRow').click(function(){
 });
 
 // --------------------------------
+
+
+// ------------------------
+// img checkbox
+// ---------------------------
+// init the state from the input
+$(".image-checkbox").each(function () {
+    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+      $(this).addClass('image-checkbox-checked');
+    }
+    else {
+      $(this).removeClass('image-checkbox-checked');
+    }
+  });
+  
+  // sync the state to the input
+  $(".image-checkbox").on("click", function (e) {
+    $(this).toggleClass('image-checkbox-checked');
+    var $checkbox = $(this).find('input[type="checkbox"]');
+    $checkbox.prop("checked",!$checkbox.prop("checked"))
+  
+    e.preventDefault();
+  });
+// -------------------
+
+
+
+// -----------------------------------
+// Multi select + search
+// -----------------------------------
+function matchCustom(params, data) {
+    // If there are no search terms, return all of the data
+    if ($.trim(params.term) === '') {
+      return data;
+    }
+
+    // Do not display the item if there is no 'text' property
+    if (typeof data.text === 'undefined') {
+      return null;
+    }
+
+    // `params.term` should be the term that is used for searching
+    // `data.text` is the text that is displayed for the data object
+    if (data.text.indexOf(params.term) > -1) {
+      var modifiedData = $.extend({}, data, true);
+      modifiedData.text += ' (khớp)';
+
+      // You can return modified objects from here
+      // This includes matching the `children` how you want in nested data sets
+      return modifiedData;
+    }
+
+    // Return `null` if the term should not be displayed
+    return null;
+}
+
+$(document).ready(function() {
+    $('.select-multiple').select2({
+        matcher: matchCustom,
+        placeholder: 'Nhập hoặc chọn tên sản phẩm',
+    });
+});
+
+// -------------------------------------------------------------

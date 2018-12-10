@@ -14,6 +14,8 @@
     <link href="{{ asset('admin-assets/images/favicon.png') }}" rel="icon" type="image/png">
     <!-- Bootstrap -->
     <link href="{{ asset('admin-assets/libs/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{{ asset('admin-assets/libs/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('admin-assets/libs/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
@@ -74,6 +76,8 @@
     <script src="{{ asset('admin-assets/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <!-- iCheck -->
     <script src="{{ asset('admin-assets/libs/iCheck/icheck.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('admin-assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- Datatables -->
     <script src="{{ asset('admin-assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
@@ -93,7 +97,6 @@
 
     <!-- File upload -->
     <script src="{{ asset('admin-assets/js/file-upload.js') }}"></script>
-
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('admin-assets/build/js/custom.min.js') }}"></script>

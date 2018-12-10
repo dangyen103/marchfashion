@@ -134,7 +134,7 @@ class UserController extends Controller
         //edit records in pivot table
         $admin->roles()->sync($request->roles);
 
-        return redirect("admin/user/edit/$id")->with('alert-success','Sửa thành công!');
+        return redirect("admin/user/$id/edit")->with('alert-success','Sửa thành công!');
     }
 
     public function getAdminDelete($id)

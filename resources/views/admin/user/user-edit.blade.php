@@ -10,7 +10,7 @@
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="d-flex-right">
-                        <a href="{{ asset("admin/user") }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
+                        <a href="{{ url()->previous() }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         @endif
 
                         <form class="form-horizontal form-label-left"
-                                action="{{ asset("admin/user/edit/$user->id") }}" 
+                                action="{{ asset("admin/user/$user->id/edit") }}" 
                                 method="POST"
                                 enctype="multipart/form-data">
 
@@ -128,7 +128,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                    <a href="{{ asset('admin/user') }}"" class="btn btn-danger">Hủy</a>
+                                    <a href="{{ url()->previous() }}" class="btn btn-danger">Hủy</a>
                                     <button type="reset" class="btn btn-info">Làm lại</button>
                                     <button type="submit" class="btn btn-success">Lưu</button>
                                 </div>

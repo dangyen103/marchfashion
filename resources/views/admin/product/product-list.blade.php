@@ -57,10 +57,11 @@
                                     <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="txt-center" style="width: 28%">Tên sản phẩm</th>
+                                                <th class="txt-center" style="width: 5%">ID</th>
+                                                <th class="txt-center" style="width: 25%">Tên sản phẩm</th>
                                                 <th class="txt-center" style="width: 15%">Loại</th>
                                                 <th class="txt-center" style="width: 15%">Giá</th>
-                                                <th class="txt-center" style="width: 27%">Nhãn</th>
+                                                <th class="txt-center" style="width: 25%">Nhãn</th>
                                                 <th class="txt-center" style="width: 15%">Hành động</th>
                                             </tr>
                                         </thead>
@@ -69,21 +70,22 @@
 
                                             @foreach ($all_products as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td class="d-flex flex-row align-items-center">
-                                                        <img src="{{ asset("uploads/products/$year/$month/$item->thumbnail") }}" width="60px" alt="">
+                                                        <img src="{{ asset("uploads/products/$item->thumbnail") }}" width="60px" alt="">
                                                         <div class="ml-1">{{ $item->name }}</div>
                                                     </td>
                                                     <td class="txt-center">{{ $item->category['name'] }}</td>
                                                     <td class="txt-center">{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                                     <td class="txt-center">{{ $item->label }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>
@@ -98,10 +100,11 @@
                                     <table id="datatable2" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="txt-center" style="width: 28%">Tên sản phẩm</th>
+                                                <th class="txt-center" style="width: 5%">ID</th>
+                                                <th class="txt-center" style="width: 25%">Tên sản phẩm</th>
                                                 <th class="txt-center" style="width: 15%">Loại</th>
                                                 <th class="txt-center" style="width: 15%">Giá</th>
-                                                <th class="txt-center" style="width: 27%">Nhãn</th>
+                                                <th class="txt-center" style="width: 25%">Nhãn</th>
                                                 <th class="txt-center" style="width: 15%">Hành động</th>
                                             </tr>
                                         </thead>
@@ -110,21 +113,22 @@
 
                                             @foreach ($top as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td class="d-flex flex-row align-items-center">
-                                                        <img src="{{ asset("uploads/products/$year/$month/$item->thumbnail") }}" width="60px" alt="">
+                                                        <img src="{{ asset("uploads/products/$item->thumbnail") }}" width="60px" alt="">
                                                         <div class="ml-1">{{ $item->name }}</div>
                                                     </td>
                                                     <td class="txt-center">{{ $item->category['name'] }}</td>
                                                     <td class="txt-center">{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                                     <td class="txt-center">{{ $item->label }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>
@@ -139,10 +143,11 @@
                                     <table id="datatable3" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="txt-center" style="width: 28%">Tên sản phẩm</th>
+                                                <th class="txt-center" style="width: 5%">ID</th>
+                                                <th class="txt-center" style="width: 25%">Tên sản phẩm</th>
                                                 <th class="txt-center" style="width: 15%">Loại</th>
                                                 <th class="txt-center" style="width: 15%">Giá</th>
-                                                <th class="txt-center" style="width: 27%">Nhãn</th>
+                                                <th class="txt-center" style="width: 25%">Nhãn</th>
                                                 <th class="txt-center" style="width: 15%">Hành động</th>
                                             </tr>
                                         </thead>
@@ -151,21 +156,22 @@
 
                                             @foreach ($pants as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td class="d-flex flex-row align-items-center">
-                                                        <img src="{{ asset("uploads/products/$year/$month/$item->thumbnail") }}" width="60px" alt="">
+                                                        <img src="{{ asset("uploads/products/$item->thumbnail") }}" width="60px" alt="">
                                                         <div class="ml-1">{{ $item->name }}</div>
                                                     </td>
                                                     <td class="txt-center">{{ $item->category['name'] }}</td>
                                                     <td class="txt-center">{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                                     <td class="txt-center">{{ $item->label }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>
@@ -180,10 +186,11 @@
                                     <table id="datatable4" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="txt-center" style="width: 28%">Tên sản phẩm</th>
+                                                <th class="txt-center" style="width: 5%">ID</th>
+                                                <th class="txt-center" style="width: 25%">Tên sản phẩm</th>
                                                 <th class="txt-center" style="width: 15%">Loại</th>
                                                 <th class="txt-center" style="width: 15%">Giá</th>
-                                                <th class="txt-center" style="width: 27%">Nhãn</th>
+                                                <th class="txt-center" style="width: 25%">Nhãn</th>
                                                 <th class="txt-center" style="width: 15%">Hành động</th>
                                             </tr>
                                         </thead>
@@ -192,21 +199,22 @@
 
                                             @foreach ($dress as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td class="d-flex flex-row align-items-center">
-                                                        <img src="{{ asset("uploads/products/$year/$month/$item->thumbnail") }}" width="60px" alt="">
+                                                        <img src="{{ asset("uploads/products/$item->thumbnail") }}" width="60px" alt="">
                                                         <div class="ml-1">{{ $item->name }}</div>
                                                     </td>
                                                     <td class="txt-center">{{ $item->category['name'] }}</td>
                                                     <td class="txt-center">{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                                     <td class="txt-center">{{ $item->label }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>
@@ -221,10 +229,11 @@
                                     <table id="datatable4" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="txt-center" style="width: 28%">Tên sản phẩm</th>
+                                                <th class="txt-center" style="width: 5%">ID</th>
+                                                <th class="txt-center" style="width: 25%">Tên sản phẩm</th>
                                                 <th class="txt-center" style="width: 15%">Loại</th>
                                                 <th class="txt-center" style="width: 15%">Giá</th>
-                                                <th class="txt-center" style="width: 27%">Nhãn</th>
+                                                <th class="txt-center" style="width: 25%">Nhãn</th>
                                                 <th class="txt-center" style="width: 15%">Hành động</th>
                                             </tr>
                                         </thead>
@@ -233,21 +242,22 @@
 
                                             @foreach ($set as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td class="d-flex flex-row align-items-center">
-                                                        <img src="{{ asset("uploads/products/$year/$month/$item->thumbnail") }}" width="60px" alt="">
+                                                        <img src="{{ asset("uploads/products/$item->thumbnail") }}" width="60px" alt="">
                                                         <div class="ml-1">{{ $item->name }}</div>
                                                     </td>
                                                     <td class="txt-center">{{ $item->category['name'] }}</td>
                                                     <td class="txt-center">{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                                     <td class="txt-center">{{ $item->label }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>
@@ -262,10 +272,11 @@
                                     <table id="datatable5" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="txt-center" style="width: 28%">Tên sản phẩm</th>
+                                                <th class="txt-center" style="width: 5%">ID</th>
+                                                <th class="txt-center" style="width: 25%">Tên sản phẩm</th>
                                                 <th class="txt-center" style="width: 15%">Loại</th>
                                                 <th class="txt-center" style="width: 15%">Giá</th>
-                                                <th class="txt-center" style="width: 27%">Nhãn</th>
+                                                <th class="txt-center" style="width: 25%">Nhãn</th>
                                                 <th class="txt-center" style="width: 15%">Hành động</th>
                                             </tr>
                                         </thead>
@@ -274,21 +285,22 @@
 
                                             @foreach ($accessories as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td class="d-flex flex-row align-items-center">
-                                                        <img src="{{ asset("uploads/products/$year/$month/$item->thumbnail") }}" width="60px" alt="">
+                                                        <img src="{{ asset("uploads/products/$item->thumbnail") }}" width="60px" alt="">
                                                         <div class="ml-1">{{ $item->name }}</div>
                                                     </td>
                                                     <td class="txt-center">{{ $item->category['name'] }}</td>
                                                     <td class="txt-center">{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                                     <td class="txt-center">{{ $item->label }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
                                                     </td>

@@ -49,13 +49,14 @@
                                     <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                            <th class="txt-center">Tên</th>
-                                            <th class="txt-center">Email</th>
-                                            <th class="txt-center">Số điện thoại</th>
-                                            <th class="txt-center">Giới tính</th>
-                                            <th class="txt-center">Tỉnh/Thành phố</th>
-                                            <th class="txt-center">Quận/Huyện</th>
-                                            <th class="txt-center">Hành động</th>
+                                                <th class="txt-center">ID</th>
+                                                <th class="txt-center">Tên</th>
+                                                <th class="txt-center">Email</th>
+                                                <th class="txt-center">Số điện thoại</th>
+                                                <th class="txt-center">Giới tính</th>
+                                                <th class="txt-center">Tỉnh/Thành phố</th>
+                                                <th class="txt-center">Quận/Huyện</th>
+                                                <th class="txt-center">Hành động</th>
                                             </tr>
                                         </thead>
 
@@ -63,6 +64,7 @@
 
                                             @foreach ($user_customers as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->email }}</td>
                                                     <td class="txt-center">{{ $item->customer['phone'] }}</td>
@@ -76,7 +78,7 @@
                                                     <td class="txt-center">{{ $item->customer['city'] }}</td>
                                                     <td class="txt-center">{{ $item->customer['district'] }}</td>
                                                     <td class="txt-center">
-                                                        <a href="{{ asset("admin/user/customer-detail/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
+                                                        <a href="{{ asset("admin/user/$item->id/detail") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
                                                         {{-- <a href="#" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
@@ -96,11 +98,12 @@
                                     <table id="datatable2" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                            <th class="txt-center">Tên</th>
-                                            <th class="txt-center">Email</th>
-                                            <th class="txt-center">Quyền</th>
-                                            <th class="txt-center">Trạng Thái</th>
-                                            <th class="txt-center">Hành động</th>
+                                                <th class="txt-center">ID</th>
+                                                <th class="txt-center">Tên</th>
+                                                <th class="txt-center">Email</th>
+                                                <th class="txt-center">Quyền</th>
+                                                <th class="txt-center">Trạng Thái</th>
+                                                <th class="txt-center">Hành động</th>
                                             </tr>
                                         </thead>
 
@@ -108,6 +111,7 @@
 
                                             @foreach ($user_admins as $item)
                                                 <tr>
+                                                    <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->email }}</td>
                                                     <td>
@@ -139,10 +143,10 @@
                                                                 <i class="fa fa-trash-o"></i>
                                                             </button>
                                                         @else
-                                                            <a href="{{ asset("admin/user/edit/$item->id") }}" title="Chỉnh sửa" class="btn btn-info btn-xs btn-action">
+                                                            <a href="{{ asset("admin/user/$item->id/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs btn-action">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <a href="{{ asset("admin/user/delete/$item->id") }}" title="Xóa" class="btn btn-danger btn-xs btn-action">
+                                                            <a href="{{ asset("admin/user/$item->id/delete") }}" title="Xóa" class="btn btn-danger btn-xs btn-action">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </a>
                                                         @endif

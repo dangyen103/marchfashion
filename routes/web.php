@@ -31,10 +31,6 @@ Route::get('test', function () {
 
 	// echo $cur_month."<br>";
 	// echo $cur_year;
-	
-	
-	echo getdate()['year'];
-	echo date('m', strtotime(getdate()['month']));
 
     return view('test');
 });
@@ -51,25 +47,29 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Admin
 Route::group(['prefix'=>'admin'], function(){
 
+	//General
 	Route::get('', 'Admin\ProductController@getProductList');
 
 	Route::get('change-password','Admin\UserController@getAdminChangePassword');
 	Route::post('change-password','Admin\UserController@postAdminChangePassword');
 
+	//User
 	Route::group(['prefix'=>'user'], function(){
 
 		Route::get('','Admin\UserController@getUserList');
-		Route::get("customer-detail/{id}",'Admin\UserController@getUserDetail');
+		Route::get("{id}/detail",'Admin\UserController@getUserDetail');
 
 		Route::get('add','Admin\UserController@getAdminAdd');
 		Route::post('add','Admin\UserController@postAdminAdd');
 
-		Route::get("edit/{id}",'Admin\UserController@getAdminEdit');
-		Route::post("edit/{id}",'Admin\UserController@postAdminEdit');
+		Route::get("{id}/edit",'Admin\UserController@getAdminEdit');
+		Route::post("{id}/edit",'Admin\UserController@postAdminEdit');
 
-		Route::get("delete/{id}",'Admin\UserController@getAdminDelete');
+		Route::get("{id}/delete",'Admin\UserController@getAdminDelete');
 	});
 
+
+	//Product
 	Route::group(['prefix'=>'product'], function(){
 
 		Route::get('','Admin\ProductController@getProductList');
@@ -78,11 +78,25 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('add','Admin\ProductController@getProductAdd');
 		Route::post('add','Admin\ProductController@postProductAdd');
 
-		Route::get("edit/{id}",'Admin\ProductController@getProductEdit');
-		Route::post("edit/{id}",'Admin\ProductController@postProductEdit');
+		Route::get("{id}/{name}/edit",'Admin\ProductController@getProductEdit');
+		Route::post("{id}/{name}/edit",'Admin\ProductController@postProductEdit');
 
-		Route::get("delete/{id}",'Admin\ProductController@getProductDelete');
+		Route::get("{id}/{name}/delete",'Admin\ProductController@getProductDelete');
 	});
 
+	//Set
+	Route::group(['prefix'=>'set'], function(){
+
+		Route::get('','Admin\SetController@getSetList');
+		Route::get('{id}/detail', 'Admin\SetController@getSetDetail');
+
+		Route::get('add','Admin\SetController@getSetAdd');
+		Route::post('add','Admin\SetController@postSetAdd');
+
+		Route::get("{id}/edit",'Admin\SetController@getSetEdit');
+		Route::post("{id}/edit",'Admin\SetController@postSetEdit');
+
+		Route::get("{id}/delete",'Admin\SetController@getSetDelete');
+	});
 
 });
