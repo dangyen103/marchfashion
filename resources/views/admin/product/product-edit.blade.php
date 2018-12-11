@@ -135,7 +135,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">* Giá</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">* Giá (₫)</label>
                                 <div class="col-md-2 col-sm-3 col-xs-12">
                                     <input type="number" 
                                         min="0"

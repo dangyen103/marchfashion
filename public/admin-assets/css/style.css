@@ -376,6 +376,14 @@ a#menu_toggle{
 .image-checkbox-checked .fa {
   display: block !important;
 }
+
+.check-box-control{
+    height: 18px !important; 
+    width: 18px !important; 
+    margin-top: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 /* --------------------- */
 
 

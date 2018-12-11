@@ -12,10 +12,6 @@ use App\User;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('test', function () {
 
     // $dist = array("Đông Anh","Cầu Giấy","Hoàng Mai","Ba Đình","Thanh Xuân");
@@ -99,4 +95,44 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get("{id}/delete",'Admin\SetController@getSetDelete');
 	});
 
+	//Discount
+	Route::group(['prefix'=>'discount'], function(){
+
+		Route::get('','Admin\DiscountController@getDiscountList');
+		Route::get('{id}/detail', 'Admin\DiscountController@getDiscountDetail');
+
+		Route::get('add','Admin\DiscountController@getDiscountAdd');
+		Route::post('add','Admin\DiscountController@postDiscountAdd');
+
+		Route::get("{id}/edit",'Admin\DiscountController@getDiscountEdit');
+		Route::post("{id}/edit",'Admin\DiscountController@postDiscountEdit');
+
+		Route::get("{id}/delete",'Admin\DiscountController@getDiscountDelete');
+	});
+
 });
+
+
+// Website
+
+Route::get('/', 'PageController@trangchu')->name('trangchu');
+
+Route::get('sanpham', 'PageController@sanpham');
+
+Route::get('sanphamchitiet', 'PageController@sanphamchitiet');
+
+Route::get('vechungtoi', 'PageController@vechungtoi');
+
+Route::get('xuhuong', 'PageController@xuhuong');
+
+Route::get('xuhuongchitiet', 'PageController@xuhuongchitiet');
+
+Route::get('giohang', 'PageController@giohang');
+
+Route::get('taikhoan', 'PageController@taikhoan');
+
+Route::get('taikhoanedit', 'PageController@taikhoanedit');
+
+Route::get('donhang', 'PageController@donhang');
+
+Route::get('donhangchitiet', 'PageController@donhangchitiet');

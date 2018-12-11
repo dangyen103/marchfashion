@@ -10,7 +10,7 @@
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="d-flex-right">
-                        <a href="{{ url()->previous() }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
+                        <a href="{{ asset("admin/user") }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
                     </div>
                 </div>
             </div>
@@ -20,23 +20,6 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_content">
-
-                        @if(count($errors)>0)
-                            <div class="alert alert-danger alert-dismissible fade in">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                @foreach($errors->all() as $err)
-                                    {{$err}}<br>
-                                @endforeach
-                            </div>
-                        @endif
-
-                        @if(session('alert-success'))
-                            <div class="alert alert-success alert-dismissible fade in">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                {{session('alert-success')}}
-                            </div>
-                        @endif
-
                         <form class="form-horizontal form-label-left">
 
                             <div class="form-group">
@@ -123,8 +106,6 @@
                                     </label>
                                 </div>
                             </div>
-
-                            <div class="ln_solid"></div>
                     
                         </form>
                     </div>

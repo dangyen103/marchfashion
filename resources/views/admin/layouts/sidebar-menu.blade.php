@@ -31,7 +31,7 @@
                 </ul>
             </li>
 
-            <li><a href="{{ asset("admin/disount") }}"><i class="fa fa-tag"></i> Khuyến mại</span></a>
+            <li><a href="{{ asset("admin/discount") }}"><i class="fa fa-tag"></i> Khuyến mại</span></a>
             </li>
 
             <li><a href="{{ asset("admin/post") }}"><i class="fa fa-newspaper-o"></i> Bài đăng</span></a>
