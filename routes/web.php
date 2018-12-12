@@ -110,6 +110,35 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get("{id}/delete",'Admin\DiscountController@getDiscountDelete');
 	});
 
+	//Post
+	Route::group(['prefix'=>'post'], function(){
+
+		Route::get('','Admin\PostController@getPostList');
+		Route::get('{id}/detail', 'Admin\PostController@getPostDetail');
+
+		Route::get('add','Admin\PostController@getPostAdd');
+		Route::post('add','Admin\PostController@postPostAdd');
+
+		Route::get("{id}/edit",'Admin\PostController@getPostEdit');
+		Route::post("{id}/edit",'Admin\PostController@postPostEdit');
+
+		Route::get("{id}/delete",'Admin\PostController@getPostDelete');
+	});
+
+	//Category
+	Route::group(['prefix'=>'category'], function(){
+
+		Route::get('','Admin\CategoryController@getCategoryList');
+
+		Route::get('add','Admin\CategoryController@getCategoryAdd');
+		Route::post('add','Admin\CategoryController@postCategoryAdd');
+
+		Route::get("{id}/edit",'Admin\CategoryController@getCategoryEdit');
+		Route::post("{id}/edit",'Admin\CategoryController@postCategoryEdit');
+
+		Route::get("{id}/delete",'Admin\CategoryController@getCategoryDelete');
+	});
+
 });
 
 
@@ -117,9 +146,14 @@ Route::group(['prefix'=>'admin'], function(){
 
 Route::get('/', 'PageController@trangchu')->name('trangchu');
 
-Route::get('sanpham', 'PageController@sanpham');
+Route::get('san-pham', 'PageController@sanpham');
+Route::get('ao', 'PageController@sanphamAo');
+Route::get('quan', 'PageController@sanphamQuan');
+Route::get('vay', 'PageController@sanphamVay');
+Route::get('bo', 'PageController@sanphamBo');
+Route::get('phu-kien', 'PageController@sanphamPhukien');
 
-Route::get('sanphamchitiet', 'PageController@sanphamchitiet');
+Route::get("sanpham/{id}/{unsigned_name}", 'PageController@sanphamchitiet');
 
 Route::get('vechungtoi', 'PageController@vechungtoi');
 

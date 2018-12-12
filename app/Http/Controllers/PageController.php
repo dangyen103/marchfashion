@@ -12,11 +12,65 @@ class PageController extends Controller
     }
 
     public function sanpham(){
-        return view('page.sanpham');
+        $products = Product::all();
+        return view('page.sanpham', compact('products'));
     }
 
-    public function sanphamchitiet(){
-        return view('page.sanphamchitiet');
+    public function sanphamAo(){
+        $products = Product::whereHas('category', function ($query) {
+            $query->where('type', 0);
+        })->get();
+
+        $type = 'Áo';
+
+        return view('page.sanpham', compact('products', 'type'));
+    }
+
+    public function sanphamQuan(){
+        $products = Product::whereHas('category', function ($query) {
+            $query->where('type', 1);
+        })->get();
+
+        $type = 'Quần';
+
+        return view('page.sanpham', compact('products', 'type'));
+    }
+
+    public function sanphamVay(){
+        $products = Product::whereHas('category', function ($query) {
+            $query->where('type', 2);
+        })->get();
+
+        $type = 'Váy';
+
+        return view('page.sanpham', compact('products', 'type'));
+    }
+
+    public function sanphamBo(){
+        $products = Product::whereHas('category', function ($query) {
+            $query->where('type', 3);
+        })->get();
+
+        $type = 'Bộ';
+
+        return view('page.sanpham', compact('products', 'type'));
+    }
+
+    public function sanphamPhukien(){
+        $products = Product::whereHas('category', function ($query) {
+            $query->where('type', 4);
+        })->get();
+
+        $type = 'Phụ kiện';
+
+        return view('page.sanpham', compact('products' ,'type'));
+    }
+
+    public function sanphamchitiet($id){
+
+        $product = Product::find($id);
+
+        return view('page.sanphamchitiet', compact('product'));
     }
 
     public function vechungtoi(){

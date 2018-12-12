@@ -7,13 +7,13 @@
         <div class="container-lf-3 px-15">
 			<div class="row mt-2">
 				<ul class="breadcrumb bg-tranf">
-					<li><a href="#">Trang chủ</a></li>
+					<li><a href="{{ route("trangchu") }}">Trang chủ</a></li>
 					<li>
 						<span>›</span>
-						<a href="#">Sản phẩm</a>
+						<a href="{{ asset("san-pham") }}">Sản phẩm</a>
 					</li>
 					<li>
-						<span>›</span>Áo
+						<span>›</span>{{ $product->name }}
 					</li>
 				</ul>
 			</div>
@@ -23,34 +23,31 @@
 					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="uploads/products/3hCxQ-A09.jpg">
+						<div class="item-slick3" data-thumb="{{ asset("uploads/products/$product->thumbnail") }}">
 							<div class="wrap-pic-w">
-								<img class="img-fluid" src="uploads/products/3hCxQ-A09.jpg" width="100%" alt="IMG-PRODUCT">
+								<img class="img-fluid" src="{{ asset("uploads/products/$product->thumbnail") }}" width="100%" alt="IMG-PRODUCT">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="uploads/products/3svuS-A05.jpg">
-							<div class="wrap-pic-w">
-								<img class="img-fluid" src="uploads/products/3svuS-A05.jpg" width="100%" alt="IMG-PRODUCT">
+						@foreach ($product->images as $item)
+							<div class="item-slick3" data-thumb="{{ asset("uploads/products/$item->image") }}">
+								<div class="wrap-pic-w">
+									<img class="img-fluid" src="{{ asset("uploads/products/$item->image") }}" width="100%" alt="IMG-PRODUCT">
+								</div>
 							</div>
-						</div>
-
-						<div class="item-slick3" data-thumb="uploads/products/DqMhb-A06.jpg">
-							<div class="wrap-pic-w">
-								<img class="img-fluid" src="uploads/products/DqMhb-A06.jpg" width="100%" alt="IMG-PRODUCT">
-							</div>
-						</div>
+						@endforeach
+						
 					</div>
 				</div>
 				<div class="col-sm-7 prod-detail-info">
 					<ul class="prod-detail-list">
-						<li class="mt-2 mt-lg-0"><h4>Áo phông in hình cô gái</h4></li>
+						<li class="mt-2 mt-lg-0"><h4>{{ $product->name }}</h4></li>
 						<li class="prod-price">Giá:
-							<span>189000₫</span>
+							<span>{{ number_format($product->price, 0, ',', '.') }} ₫</span>
 							<span>249000đ</span>
 							<span>-10%</span>
 						</li>
-						<li>Mã sản phẩm:<span class="prod-detail-id">A813744</span></li>
+						<li>Mã sản phẩm:<span class="prod-detail-id">{{ str_pad($product->id, 8, '0', STR_PAD_LEFT) }}</span></li>
 						<li>Tình trạng:<span>Còn hàng</span> </li>
 					</ul>
 
@@ -108,86 +105,32 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
-					<div class="prod-card"><a href="#">
-						<div class="prod-card-img">
-							<img class="img-fluid" src="uploads/products/UEdaB-A10.jpg" width="100%" alt="hình ảnh">
-						</div>
-						<div class="prod-card-info">
-							<div class="prod-card-id">A20493</div>
-							<div class="prod-card-price">295000₫</div>
-						</div>
-						<div class="tag-new">
-							<img src="uploads/icons/New_Icon.png" alt="icon">
-						</div>
-						<div class="tag-sale">
-							<span class="card-sale">-40%</span>
-						</div>
-						<div class="card-add-to-cart">
-							<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
-						</div>
-					</a></div>
-				</div>
-				<div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
-					<div class="prod-card"><a href="#">
-						<div class="prod-card-img">
-							<img class="img-fluid" src="uploads/products/UEdaB-A10.jpg" width="100%" alt="hình ảnh">
-						</div>
-						<div class="prod-card-info">
-							<div class="prod-card-id">A20493</div>
-							<div class="prod-card-price">295000₫</div>
-						</div>
-						<div class="tag-new">
-							<img src="uploads/icons/New_Icon.png" alt="icon">
-						</div>
-						<div class="tag-sale">
-							<span class="card-sale">-40%</span>
-						</div>
-						<div class="card-add-to-cart">
-							<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
-						</div>
-					</a></div>
-				</div>
-				<div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
-					<div class="prod-card"><a href="#">
-						<div class="prod-card-img">
-							<img class="img-fluid" src="uploads/products/UEdaB-A10.jpg" width="100%" alt="hình ảnh">
-						</div>
-						<div class="prod-card-info">
-							<div class="prod-card-id">A20493</div>
-							<div class="prod-card-price">295000₫</div>
-						</div>
-						<div class="tag-new">
-							<img src="uploads/icons/New_Icon.png" alt="icon">
-						</div>
-						<div class="tag-sale">
-							<span class="card-sale">-40%</span>
-						</div>
-						<div class="card-add-to-cart">
-							<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
-						</div>
-					</a></div>
-				</div>
-				<div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
-					<div class="prod-card"><a href="#">
-						<div class="prod-card-img">
-							<img class="img-fluid" src="uploads/products/UEdaB-A10.jpg" width="100%" alt="hình ảnh">
-						</div>
-						<div class="prod-card-info">
-							<div class="prod-card-id">A20493</div>
-							<div class="prod-card-price">295000₫</div>
-						</div>
-						<div class="tag-new">
-							<img src="uploads/icons/New_Icon.png" alt="icon">
-						</div>
-						<div class="tag-sale">
-							<span class="card-sale">-40%</span>
-						</div>
-						<div class="card-add-to-cart">
-							<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
-						</div>
-					</a></div>
-				</div>
+				@foreach ($product->sets as $set_item)
+					@foreach ($set_item->products as $item)
+						@if ($item->id != $product->id)
+							<div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
+								<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}">
+									<div class="prod-card-img">
+										<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
+									</div>
+									<div class="prod-card-info">
+										<div class="prod-card-id">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</div>
+										<div class="prod-card-price">{{ number_format($item->price, 0, ',', '.') }} ₫</div>
+									</div>
+									<div class="tag-new">
+										<img src="{{ asset("uploads/icons/New_Icon.png") }}" alt="icon">
+									</div>
+									<div class="tag-sale">
+										<span class="card-sale">-40%</span>
+									</div>
+									<div class="card-add-to-cart">
+										<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
+									</div>
+								</a></div>
+							</div>
+						@endif
+					@endforeach
+				@endforeach
 			</div>
 		</div>
 		<!-- End Suggestion -->

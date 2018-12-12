@@ -39,7 +39,7 @@
                 <div class="col-md-6 col-lg-3 mb-4">
                     <div class="post-card">
                         <div class="post-card-img">
-                            <img src="uploads/news/gQaBK-B23.jpg" alt="hình ảnh" width="100%">
+                            <img src="uploads/posts/gQaBK-B23.jpg" alt="hình ảnh" width="100%">
                         </div>
                         <div class="post-card-info">
                             <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
@@ -50,7 +50,7 @@
                 <div class="col-md-6 col-lg-3 mb-4">
                     <div class="post-card">
                         <div class="post-card-img">
-                            <img src="uploads/news/gfaCb-photo-7-15269503150391483364789-edit.jpg" alt="hình ảnh" width="100%">
+                            <img src="uploads/posts/gfaCb-photo-7-15269503150391483364789-edit.jpg" alt="hình ảnh" width="100%">
                         </div>
                         <div class="post-card-info">
                             <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
@@ -61,7 +61,7 @@
                 <div class="col-md-6 col-lg-3 mb-4">
                     <div class="post-card">
                         <div class="post-card-img">
-                            <img src="uploads/news/FcUqO-112.jpg" alt="hình ảnh" width="100%">
+                            <img src="uploads/posts/FcUqO-112.jpg" alt="hình ảnh" width="100%">
                         </div>
                         <div class="post-card-info">
                             <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
@@ -72,7 +72,7 @@
                 <div class="col-md-6 col-lg-3 mb-4">
                     <div class="post-card">
                         <div class="post-card-img">
-                            <img src="uploads/news/Numxo-photo-15-1526863728656470351668-edit.jpg" alt="hình ảnh" width="100%">
+                            <img src="uploads/posts/Numxo-photo-15-1526863728656470351668-edit.jpg" alt="hình ảnh" width="100%">
                         </div>
                         <div class="post-card-info">
                             <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>

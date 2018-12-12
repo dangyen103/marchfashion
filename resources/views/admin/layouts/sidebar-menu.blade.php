@@ -5,7 +5,7 @@
         <ul class="nav side-menu">
 
             <li><a href="{{ asset('admin/user') }}">
-                <i class="fa fa-users"></i> User</a>
+                <i class="fa fa-users"></i> Người dùng</a>
                 {{-- <ul class="nav child_menu">
                     <li><a href="#">Danh sách khách hàng</a></li>
                     <li><a href="#">Danh sách quản trị viên</a></li>
@@ -18,7 +18,7 @@
             </li>
 
             <li><a href="{{ asset("admin/set") }}">
-                <i class="fa fa-sort"></i> Set trang phục</span></a>
+                <i class="fa fa-sort"></i> Bộ trang phục</span></a>
             </li>
 
             <li><a><i class="fa fa-list-alt"></i> Đơn hàng<span class="fa fa-chevron-down"></span></a>
