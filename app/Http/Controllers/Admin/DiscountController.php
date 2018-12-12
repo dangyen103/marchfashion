@@ -54,6 +54,24 @@ class DiscountController extends Controller
         $discount->start_time = $request->start_time;
         $discount->finish_time = $request->finish_time;
         $discount->description = $request->description;
+     
+        // Checck exists discount of product at the same time
+        foreach ($request->products as $product_id)
+        {
+            $product = Product::find($product_id);
+
+            foreach ($product->discounts as $prod_discount)
+            {
+               if($request->start_time <=  $prod_discount->finish_time 
+                    || $request->finish_time >= $prod_discount->start_time)
+                {
+                    $product_error = str_pad($product->id, 8, '0', STR_PAD_LEFT);
+                    return redirect('admin/discount/add')->with('alert-danger',"Sản phẩm mã $product_error đã có khuyến mại trong thời gian này.");
+                }
+            }
+        }
+
+        // Save
         $discount->save();
 
         foreach ($request->products as $product_id) {
@@ -96,6 +114,23 @@ class DiscountController extends Controller
         $discount->start_time = $request->start_time;
         $discount->finish_time = $request->finish_time;
         $discount->description = $request->description;
+
+        // Checck exists discount of product at the same time
+        foreach ($request->products as $product_id)
+        {
+            $product = Product::find($product_id);
+
+            foreach ($product->discounts as $prod_discount)
+            {
+               if($request->start_time <=  $prod_discount->finish_time 
+                    || $request->finish_time >= $prod_discount->start_time)
+                {
+                    $product_error = str_pad($product->id, 8, '0', STR_PAD_LEFT);
+                    return redirect("admin/discount/$discount->id/edit")->with('alert-danger',"Sản phẩm mã $product_error đã có khuyến mại trong thời gian này.");
+                }
+            }
+        }
+
         $discount->save();
 
         //edit records in pivot table

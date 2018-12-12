@@ -37,6 +37,13 @@
                             </div>
                         @endif
 
+                        @if(session('alert-danger'))
+                            <div class="alert alert-danger alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{session('alert-danger')}}
+                            </div>
+                        @endif
+
                         <form class="form-horizontal form-label-left"
                                 action="{{ asset('admin/discount/add') }}" 
                                 method="POST"
@@ -100,7 +107,7 @@
                                             multiple="multiple"
                                             required>
                                         @foreach ($products as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT)." - $item->name" }}</option>
                                         @endforeach
                                     </select>
                                 </div>

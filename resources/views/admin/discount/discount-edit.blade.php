@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Khuyến mại<small> Thêm mới</small></h3>
+                <h3>Khuyến mại<small> Chỉnh sửa</small></h3>
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -34,6 +34,13 @@
                             <div class="alert alert-success alert-dismissible fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 {{session('alert-success')}}
+                            </div>
+                        @endif
+
+                        @if(session('alert-danger'))
+                            <div class="alert alert-danger alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{session('alert-danger')}}
                             </div>
                         @endif
 
@@ -134,7 +141,7 @@
                                             multiple="multiple"
                                             required>
                                         @foreach ($products as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT)." - $item->name" }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -145,7 +152,7 @@
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                     <a href="{{ asset('admin/discount') }}" class="btn btn-danger">Hủy</a>
                                     <button type="reset" class="btn btn-info">Làm lại</button>
-                                    <button type="submit" class="btn btn-success">Thêm</button>
+                                    <button type="submit" class="btn btn-success">Lưu</button>
                                 </div>
                             </div>
 

@@ -384,6 +384,16 @@ a#menu_toggle{
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
+.btn-group a{
+    position: relative;
+}
+
+.btn-group .upload-img{
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+}
 /* --------------------- */
 
 
@@ -515,5 +525,19 @@ a#menu_toggle{
 
 .product-image img {
     width: 95%;
+}
+
+.alert-danger, 
+.alert-error,
+.alert-success{
+    color: #fff;
+}
+
+.close{
+    opacity: .75;
+}
+
+.alert-dismissable .close, .alert-dismissible .close{
+    color: #fff;
 }
 /* ------------------- */

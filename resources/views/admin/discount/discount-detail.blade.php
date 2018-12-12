@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 col-sm-3 col-xs-12 control-label">Thời gian kết thúc:
+                                <label class="col-md-3 col-sm-3 col-xs-12 control-label">Mô tả khuyến mại:
                                 </label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <label class="control-label font-normal">

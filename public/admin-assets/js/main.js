@@ -1,12 +1,197 @@
 
 // ---------------------------------------
 /* DATA TABLES */
-$('#datatable1').dataTable();
-$('#datatable2').dataTable();
-$('#datatable3').dataTable();
-$('#datatable4').dataTable();
-$('#datatable5').dataTable();
-$('#datatable6').dataTable();
+$('#datatable').dataTable( {
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+} );
+
+$('#datatable1').dataTable({
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+});
+
+$('#datatable2').dataTable({
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+});
+
+$('#datatable3').dataTable({
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+});
+
+$('#datatable4').dataTable({
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+});
+
+$('#datatable5').dataTable({
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+});
+
+$('#datatable6').dataTable({
+    "language": {
+        "decimal":        "",
+        "emptyTable":     "Không có dữ liệu",
+        "info":           "_START_ - _END_ trong số _TOTAL_",
+        "infoEmpty":      "0 - 0 trong số 0",
+        "infoFiltered":   "(lọc từ _MAX_ bản ghi)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Hiển thị _MENU_",
+        "loadingRecords": "Đang tải...",
+        "processing":     "Processing...",
+        "search":         "Tìm kiếm:",
+        "zeroRecords":    "Không tìm thấy bản ghi nào",
+        "paginate": {
+            "first":      "Đầu",
+            "last":       "Cuối",
+            "next":       "Tiếp",
+            "previous":   "Sau"
+        },
+        "aria": {
+            "sortAscending":  ": kích hoạt sắp xếp cột tăng dần",
+            "sortDescending": ": kích hoạt sắp xếp cột giảm dần"
+        }
+    }
+});
+
+
+
 
 
 //-------------------------------------
@@ -122,4 +307,19 @@ $(document).ready(function() {
     });
 });
 
-// -------------------------------------------------------------
+// ------------------------------------------------------
+
+
+// ------------------------------------------
+// CKeditor
+// --------------------------------------------
+// CKEDITOR.replace('post-ckeditor', {
+//     filebrowserBrowseUrl: `{{ asset('admin-assets/libs/ckfinder/ckfinder.html') }}`,
+//     filebrowserImageBrowseUrl: `{{ asset('admin-assets/libs/ckfinder/ckfinder.html?type=Images') }}`,
+//     filebrowserFlashBrowseUrl: `{{ asset('admin-assets/libs/ckfinder/ckfinder.html?type=Flash') }}`,
+//     filebrowserUploadUrl: `{{ asset('admin-assets/libs/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}`,
+//     filebrowserImageUploadUrl: `{{ asset('admin-assets/libs/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}`,
+//     filebrowserFlashUploadUrl: `{{ asset('admin-assets/libs/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}`
+// });
+// CKEDITOR.replace( 'post-ckeditor' );
+// ------------------------------------------

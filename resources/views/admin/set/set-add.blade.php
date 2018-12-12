@@ -63,7 +63,7 @@
                                             multiple="multiple"
                                             required>
                                         @foreach ($products as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT)." - $item->name" }}</option>
                                         @endforeach
                                     </select>
                                 </div>
