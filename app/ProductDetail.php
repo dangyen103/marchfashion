@@ -14,4 +14,10 @@ class ProductDetail extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Order', 'order_product_detail')
+                    ->withPivot('order_quantity', 'order_discount');
+    }
 }
