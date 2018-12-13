@@ -24,10 +24,10 @@
             <li><a><i class="fa fa-list-alt"></i> Đơn hàng<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{ asset("admin/order") }}">Tất cả</a></li>
-                    <li><a href="#">Chờ xác nhận</a></li>
-                    <li><a href="#">Đang đóng gói</a></li>
-                    <li><a href="#">Đang vận chuyển</a></li>
-                    <li><a href="#">Đã giao hàng</a></li>
+                    <li><a href="{{ asset("admin/order/confirm") }}">Chờ xác nhận</a></li>
+                    <li><a href="{{ asset("admin/order/packing") }}">Đang đóng gói</a></li>
+                    <li><a href="{{ asset("admin/order/shipping") }}">Đang vận chuyển</a></li>
+                    <li><a href="{{ asset("admin/order/completed") }}">Đã giao hàng</a></li>
                 </ul>
             </li>
 

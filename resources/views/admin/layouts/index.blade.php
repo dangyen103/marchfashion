@@ -22,13 +22,8 @@
     <link href="{{ asset('admin-assets/libs/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="{{ asset('admin-assets/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet"/>
-
     <!-- Datatables -->
     <link href="{{ asset('admin-assets/libs/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin-assets/libs/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin-assets/libs/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin-assets/libs/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin-assets/libs/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
     
     <!-- File Upload -->
     <link href="{{ asset('admin-assets/css/file-upload.css') }}" rel="stylesheet" >
@@ -70,8 +65,10 @@
     <script src="{{ asset('admin-assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick -->
     <script src="{{ asset('admin-assets/libs/fastclick/lib/fastclick.js') }}"></script>
-    <!-- NProgress -->
+    {{-- <!-- NProgress -->
     <script src="{{ asset('admin-assets/libs/nprogress/nprogress.js') }}"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="{{ asset('admin-assets/libs/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script> --}}
     <!-- jQuery custom content scroller -->
     <script src="{{ asset('admin-assets/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <!-- iCheck -->
@@ -81,16 +78,6 @@
     <!-- Datatables -->
     <script src="{{ asset('admin-assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>

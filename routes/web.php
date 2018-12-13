@@ -95,6 +95,23 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get("{id}/delete",'Admin\SetController@getSetDelete');
 	});
 
+	//Order
+	Route::group(['prefix'=>'order'], function(){
+
+		Route::get('','Admin\OrderController@getOrderList');
+		Route::get('confirm','Admin\OrderController@getConfirmList');
+		Route::get('packing','Admin\OrderController@getPackingList');
+		Route::get('shipping','Admin\OrderController@getShippingList');
+		Route::get('completed','Admin\OrderController@getCompletedList');
+		
+		Route::get('{id}','Admin\OrderController@getOrderDetail');
+
+		Route::get('{id}/cancel','Admin\OrderController@getOrderCancle');
+		Route::get('{id}/cancel-undo','Admin\OrderController@getOrderCancleUndo');
+		Route::get('{id}/change-status','Admin\OrderController@getOrderChangeStatus');
+	});
+
+
 	//Discount
 	Route::group(['prefix'=>'discount'], function(){
 

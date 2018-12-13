@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('receiver_phone');
             $table->integer('shipping_price');
             $table->tinyInteger('shipping_type')->default(0);
-            $table->tinyInteger('payment_type')->defaul(0);
+            $table->tinyInteger('payment_type');
             $table->tinyInteger('status')->default(0);
             $table->integer('total');
             $table->timestamps();
