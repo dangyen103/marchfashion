@@ -313,15 +313,17 @@ $(document).ready(function() {
 // ------------------------------------------
 // CKeditor
 // --------------------------------------------
-// CKEDITOR.replace('post-ckeditor', {
-//     filebrowserBrowseUrl: `{{ asset('admin-assets/libs/ckfinder/ckfinder.html') }}`,
-//     filebrowserImageBrowseUrl: `{{ asset('admin-assets/libs/ckfinder/ckfinder.html?type=Images') }}`,
-//     filebrowserFlashBrowseUrl: `{{ asset('admin-assets/libs/ckfinder/ckfinder.html?type=Flash') }}`,
-//     filebrowserUploadUrl: `{{ asset('admin-assets/libs/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}`,
-//     filebrowserImageUploadUrl: `{{ asset('admin-assets/libs/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}`,
-//     filebrowserFlashUploadUrl: `{{ asset('admin-assets/libs/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}`
-// });
-// CKEDITOR.replace( 'post-ckeditor' );
+CKEDITOR.replace('post-editor',{
+    // Adding drag and drop image upload.
+    uploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    filebrowserBrowseUrl: '/marchfashion/public/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: '/marchfashion/public/ckfinder/ckfinder.html?type=Images',
+    filebrowserUploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+
+});
 // ------------------------------------------
 
 

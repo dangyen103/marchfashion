@@ -42,7 +42,7 @@
                                     <th class="txt-center">ID</th>
                                     <th class="txt-center">Tiêu đề</th>
                                     <th class="txt-center">Mô tả</th>
-                                    <th class="txt-center">Hành động</th>
+                                    <th class="txt-center" style="width: 15%">Hành động</th>
                                 </tr>
                             </thead>
 
@@ -54,13 +54,10 @@
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->description }}</td>
                                         <td class="txt-center">
-                                            <a href="{{ asset("admin/set/$item->id/detail") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
-                                                <i class="fa fa-info"></i>
-                                            </a>
-                                            <a href="{{ asset("admin/set/$item->id/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                            <a href="{{ asset("admin/post/$item->id/$item->unsigned_title/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="{{ asset("admin/set/$item->id/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                            <a href="{{ asset("admin/post/$item->id/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
                                         </td>

@@ -46,6 +46,9 @@ Route::group(['prefix'=>'admin'], function(){
 	//General
 	Route::get('', 'Admin\ProductController@getProductList');
 
+	Route::get('login', 'Admin\UserController@getAdminLogin');
+	Route::get('logout', 'Admin\UserController@getAdminLogout');
+
 	Route::get('change-password','Admin\UserController@getAdminChangePassword');
 	Route::post('change-password','Admin\UserController@postAdminChangePassword');
 
@@ -136,8 +139,8 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('add','Admin\PostController@getPostAdd');
 		Route::post('add','Admin\PostController@postPostAdd');
 
-		Route::get("{id}/edit",'Admin\PostController@getPostEdit');
-		Route::post("{id}/edit",'Admin\PostController@postPostEdit');
+		Route::get("{id}/{unsigned_title}/edit",'Admin\PostController@getPostEdit');
+		Route::post("{id}/{unsigned_title}/edit",'Admin\PostController@postPostEdit');
 
 		Route::get("{id}/delete",'Admin\PostController@getPostDelete');
 	});

@@ -81,6 +81,8 @@
     <script src="{{ asset('admin-assets/libs/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <!-- CKeditor -->
+    <script src="{{ asset('admin-assets/libs/ckeditor/ckeditor.js') }}"></script>
 
     <!-- File upload -->
     <script src="{{ asset('admin-assets/js/file-upload.js') }}"></script>

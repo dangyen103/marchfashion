@@ -227,7 +227,7 @@ class ProductController extends Controller
             //save new thumbnail into folder
             $thumbnail_file->move($directoryName, $thumbnail);
             //remove old thumbnail out of folder
-            unlink($directoryName.'/'.$product->thumbnail);
+            unlink('uploads/posts/'.$product->thumbnail);
             //save to db
             $product->thumbnail = "$cur_year/$cur_month/$thumbnail";
         }
