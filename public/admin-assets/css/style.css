@@ -55,6 +55,7 @@ input:active:focus{
 
 .d-flex-right{
     display: flex;
+    display: -ms-flexbox !important;
     justify-content: flex-end;
     align-items: center;
 }
@@ -640,17 +641,23 @@ ul.wizard_steps{
     color: #fff;
 }
 
-.cancel-alert{
+.cancel-alert, .confirm-alert{
     margin-left: .5rem;
     color: #fff;
     text-decoration: underline;
 }
 
+.confirm-alert{
+    opacity: .85;
+}
+
 .cancel-alert:hover,
 .cancel-alert:focus,
-.cancel-alert:active{
+.cancel-alert:active,
+.confirm-alert:hover,
+.confirm-alert:focus,
+.confirm-alert:active{
     color: #fff;
-    font-weight: bold;
     text-decoration: underline;
 }
 

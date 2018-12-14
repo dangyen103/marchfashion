@@ -33,6 +33,7 @@
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 {{session('alert-danger')}}
                                 <a href="{{ asset("admin/order/$order->id/cancel-undo") }}" class="cancel-alert">Hoàn tác</a>
+                                <a href="{{ asset("admin/order/$order->id/cancel-confirm") }}" class="confirm-alert">Xác nhận</a>
                             </div>
                         @endif
 

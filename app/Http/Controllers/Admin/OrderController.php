@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Mail\OrderStatusMail;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -72,7 +74,18 @@ class OrderController extends Controller
             $order->cancel_status = 1;
             $order->save();
         }
-        return redirect("admin/order/$order->id")->with('alert-danger','Đơn hàng này đã bị hủy!');
+        return redirect("admin/order/$order->id")->with('alert-danger','Đơn hàng này sẽ bị hủy!');
+    }
+
+    public function getOrderCancleConfirm($id)
+    {
+        $order = Order::find($id);
+
+        //send email
+        $email = new OrderStatusMail($order);
+        Mail::to($order->customer->user->email)->send($email);
+
+        return redirect("admin/order/$order->id")->with('alert-success','Đẫ hủy đơn hàng!');
     }
 
     public function getOrderCancleUndo($id)
@@ -88,20 +101,37 @@ class OrderController extends Controller
     public function getOrderChangeStatus($id)
     {
         $order = Order::find($id);
-        if($order->status == 0){
-            $order->status = 1;
-            $order->save();
-            return redirect("admin/order/$order->id")->with('alert-success','Đơn hàng đã chuyển sang đang đóng gói!');
-        }
-        elseif ($order->status == 1) {
-            $order->status = 2;
-            $order->save();
-            return redirect("admin/order/$order->id")->with('alert-success','Đơn hàng đã chuyển sang đang vận chuyển!');
-        }
-        elseif ($order->status == 2) {
-            $order->status = 3;
-            $order->save();
-            return redirect("admin/order/$order->id")->with('alert-success','Đơn hàng đã giao thành công!');
+        if ($order->cancel_status == 0) {
+            if($order->status == 0){
+                $order->status = 1;
+                $order->save();
+    
+                //send email
+                $email = new OrderStatusMail($order);
+                Mail::to($order->customer->user->email)->send($email);
+    
+                return redirect("admin/order/$order->id")->with('alert-success','Đơn hàng đã chuyển sang đang đóng gói!');
+            }
+            elseif ($order->status == 1) {
+                $order->status = 2;
+                $order->save();
+    
+                //send email
+                $email = new OrderStatusMail($order);
+                Mail::to($order->customer->user->email)->send($email);
+    
+                return redirect("admin/order/$order->id")->with('alert-success','Đơn hàng đã chuyển sang đang vận chuyển!');
+            }
+            elseif ($order->status == 2) {
+                $order->status = 3;
+                $order->save();
+    
+                //send email
+                $email = new OrderStatusMail($order);
+                Mail::to($order->customer->user->email)->send($email);
+    
+                return redirect("admin/order/$order->id")->with('alert-success','Đơn hàng đã giao thành công!');
+            }
         }
     }
 }

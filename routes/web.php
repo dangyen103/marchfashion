@@ -28,7 +28,7 @@ Route::get('test', function () {
 	// echo $cur_month."<br>";
 	// echo $cur_year;
 
-    return view('test');
+    return view('mails.confirm-order');
 });
 
 Route::post('test', 'Admin\ProductController@test');
@@ -110,6 +110,7 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('{id}','Admin\OrderController@getOrderDetail');
 
 		Route::get('{id}/cancel','Admin\OrderController@getOrderCancle');
+		Route::get('{id}/cancel-confirm','Admin\OrderController@getOrderCancleConfirm');
 		Route::get('{id}/cancel-undo','Admin\OrderController@getOrderCancleUndo');
 		Route::get('{id}/change-status','Admin\OrderController@getOrderChangeStatus');
 	});
