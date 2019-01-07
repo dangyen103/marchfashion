@@ -98,14 +98,13 @@ class PostController extends Controller
     {
         $this->validate($request,
         [
-            'title' => 'required|exists:posts,title|max:190',
+            'title' => 'required|max:190',
             'description'=>'required|max:190',
             'content'=>'required'
 
         ],
         [
             'title.required' => 'Bạn chưa nhập tiêu đề bài viết',
-            'title.exists' => 'Tên tiêu đề đã tồn tại',
             'title.max' => 'Tên tiêu đề quá dài. Vui lòng nhập không quá 190 ký tự',
             'description.required' => 'Bạn chưa nhập mô tả bài viết',
             'description.max' => 'Mô tả quá dài. Vui lòng nhập không quá 190 ký tự',

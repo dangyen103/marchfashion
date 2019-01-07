@@ -8,59 +8,71 @@ use App\Category;
 use App\Product;
 use App\ProductImage;
 use App\ProductDetail;
+use Gate;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $year = getdate()['year'];
-        $month = date('m', strtotime(getdate()['month']));
-
-        view()->share(compact('year', 'month'));
-    }
-
     public function getProductList()
     {
-        $all_products = Product::all();
+        if (Gate::check('prod-manager') || Gate::check('set-manager') || 
+            Gate::check('disc-manager') || Gate::check('order-manager') ||
+            Gate::check('confirmOrder') || Gate::check('packingOrder'))
+        {
+            $all_products = Product::all();
 
-        $top = Product::whereHas('category', function ($query) {
-            $query->where('type', 0);
-        })->get();
+            $top = Product::whereHas('category', function ($query) {
+                $query->where('type', 0);
+            })->get();
 
-        $pants = Product::whereHas('category', function ($query) {
-            $query->where('type', 1);
-        })->get();
+            $pants = Product::whereHas('category', function ($query) {
+                $query->where('type', 1);
+            })->get();
 
-        $dress = Product::whereHas('category', function ($query) {
-            $query->where('type', 2);
-        })->get();
+            $dress = Product::whereHas('category', function ($query) {
+                $query->where('type', 2);
+            })->get();
 
-        $set = Product::whereHas('category', function ($query) {
-            $query->where('type', 3);
-        })->get();
+            $set = Product::whereHas('category', function ($query) {
+                $query->where('type', 3);
+            })->get();
 
-        $accessories = Product::whereHas('category', function ($query) {
-            $query->where('type', 4);
-        })->get();
+            $accessories = Product::whereHas('category', function ($query) {
+                $query->where('type', 4);
+            })->get();
 
-        return view('admin.product.product-list', 
-                compact('all_products', 'top', 'pants', 'dress', 'set', 'accessories'));
+            return view('admin.product.product-list', 
+                    compact('all_products', 'top', 'pants', 'dress', 'set', 'accessories'));
+        }
+        else {
+            abort(403);
+        }
     }
 
     public function getProductDetail($id)
     {
-        $product = Product::find($id);
-        return view('admin.product.product-detail', compact('product'));
+        if (Gate::check('prod-manager') || Gate::check('set-manager') || 
+            Gate::check('disc-manager') || Gate::check('order-manager') ||
+            Gate::check('confirmOrder') || Gate::check('packingOrder'))
+        {
+            $product = Product::find($id);
+            return view('admin.product.product-detail', compact('product'));
+        }
+        else {
+            abort(403);
+        }
     }
 
     public function getProductAdd()
     {
+        $this->authorize('prod-manager');
         $cates = Category::all();
         return view('admin.product.product-add',compact('cates'));
     }
 
     public function postProductAdd(Request $request)
     {
+        $this->authorize('prod-manager');
+        
         $this->validate($request,
         [
             'name'=>'required|unique:products|max:190',
@@ -166,6 +178,8 @@ class ProductController extends Controller
 
     public function getProductEdit($id)
     {
+        $this->authorize('prod-manager');
+
         $cates = Category::all();
         $product =  Product::find($id);
         return view('admin.product.product-edit', compact('product','cates'));
@@ -173,9 +187,11 @@ class ProductController extends Controller
 
     public function postProductEdit(Request $request, $id)
     {
+        $this->authorize('prod-manager');
+
         $this->validate($request,
         [
-            'name'=>'required|exists:products,name|max:190',
+            'name'=>'required|max:190',
             'category' => 'required',
             'price' => 'required|integer',
             'label' => 'max:190'
@@ -183,7 +199,6 @@ class ProductController extends Controller
         ],
         [
             'name.required' => 'Bạn chưa nhập tên sản phẩm',
-            'name.exists' => 'Tên sản phẩm đã tồn tại',
             'name.max' => 'Tên sản phẩm quá dài. Vui lòng nhập không quá 190 ký tự',
             'category.required' => 'Bạn chưa chọn loại sản phẩm',
             'price.required' => 'Bạn chưa nhập giá sản phẩm',
@@ -227,7 +242,7 @@ class ProductController extends Controller
             //save new thumbnail into folder
             $thumbnail_file->move($directoryName, $thumbnail);
             //remove old thumbnail out of folder
-            unlink('uploads/posts/'.$product->thumbnail);
+            unlink('uploads/products/'.$product->thumbnail);
             //save to db
             $product->thumbnail = "$cur_year/$cur_month/$thumbnail";
         }
@@ -265,7 +280,7 @@ class ProductController extends Controller
             {
                 if (!in_array($item->id, $old_images))
                 {
-                    unlink("$directoryName/$item->image");
+                    unlink("uploads/products/$item->image");
                     $item->delete();
                 }
             }
@@ -274,7 +289,7 @@ class ProductController extends Controller
         {
             foreach ($product->images as $item)
             {
-                unlink("$directoryName/$item->image");
+                unlink("uploads/products/$item->image");
                 $item->delete();
             }
         }
@@ -310,6 +325,6 @@ class ProductController extends Controller
 
     public function getProductDelete($id)
     {
-
+        $this->authorize('prod-manager');
     }
 }

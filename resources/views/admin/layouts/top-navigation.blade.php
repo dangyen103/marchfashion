@@ -7,18 +7,21 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        {{-- <img src="{{ asset('admin-assets/images/user.png')}}" alt=""> --}}
-                        Đặng Yến
-                        <span class=" fa fa-angle-down"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href=""> Đổi mật khẩu</a></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
-                    </ul>
+                    @if(Auth::check())
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            {{-- <img src="{{ asset('admin-assets/images/user.png')}}" alt=""> --}}
+                            <i class="fa fa-cog"></i>
+                                {{ Auth::user()->name }}            
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="{{ asset('admin/change-password') }}"> Đổi mật khẩu</a></li>
+                            <li><a href="{{ asset('admin/logout') }}"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                        </ul>
+                    @endif
                 </li>
 
-                <li role="presentation" class="dropdown">
+                {{-- <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell-o"></i>
                     <span class="badge bg-orage">6</span>
@@ -45,7 +48,7 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </nav>
     </div>

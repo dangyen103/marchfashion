@@ -41,6 +41,8 @@
 
 	<script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
 
+	<script src="{{ asset('js/vue.js') }}"></script>
+
 	<script src="{{ asset('js/main.js') }}"></script>
 
 	<!-- <script src="js/header-sidebar.js"></script> -->

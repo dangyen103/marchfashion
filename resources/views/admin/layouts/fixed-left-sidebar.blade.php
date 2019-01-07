@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col menu_fixed bg-black">
     <div class="left_col scroll-view bg-black">
         <div class="navbar nav_title bg-black" style="border: 0;">
-            <a href="#" class="site_title bg-black">
+            <a href="{{ asset('admin') }}" class="site_title bg-black">
                 <i class="bg-black"><img src="{{ asset('admin-assets/images/logo-icon.png') }}" alt="icon" width="26px"></i> 
                 <span style="margin-left: .5rem;"> March Fashion</span>
             </a>
@@ -16,7 +16,10 @@
             </div>
             <div class="profile_info">
                 <span>Xin chào,</span>
-                <h2>Đặng Yến</h2>
+                @if(Auth::check())
+                    <h2>{{ Auth::user()->name }}</h2>             
+                @endif
+               
             </div>
         </div>
         <!-- /menu profile quick info -->

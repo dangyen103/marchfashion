@@ -7,13 +7,15 @@
             <div class="title_left">
                 <h3>Sản phẩm <small> Danh sách sản phẩm</small></h3>
             </div>
-            <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                    <div class="d-flex-right">
-                        <a href="{{ asset("admin/product/add") }}" class="btn btn-info"><i class="fa fa-plus-circle"></i> Thêm sản phẩm</a>
+            @can('prod-manager')
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="d-flex-right">
+                            <a href="{{ asset("admin/product/add") }}" class="btn btn-info"><i class="fa fa-plus-circle"></i> Thêm sản phẩm</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endcan
         </div>
 
         <div class="row">
@@ -82,12 +84,16 @@
                                                         <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+
+                                                        @can('prod-manager')
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endcan
+
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -125,12 +131,15 @@
                                                         <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+
+                                                        @can('prod-manager')
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -168,12 +177,14 @@
                                                         <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+                                                        @can('prod-manager')
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -211,12 +222,15 @@
                                                         <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+
+                                                        @can('prod-manager')
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -254,12 +268,15 @@
                                                         <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+
+                                                        @can('prod-manager')
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -297,12 +314,15 @@
                                                         <a href="{{ asset("admin/product/$item->id/$item->name") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                             <i class="fa fa-info"></i>
                                                         </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
+
+                                                        @can('prod-manager')
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ asset("admin/product/$item->id/$item->name/delete") }}" title="Xóa" class="btn btn-danger btn-xs  btn-action">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -32,24 +32,52 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="{{ asset('admin/login') }}" 
+                  method="POST"
+                  enctype="multipart/form-data">
+              
+              <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+              
               <h1 class="cl-black">Đăng nhập</h1>
+
+              @if(count($errors)>0)
+                  <div class="alert alert-danger alert-dismissible fade in">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      @foreach($errors->all() as $err)
+                          {{$err}}<br>
+                      @endforeach
+                  </div>
+              @endif
+
+              @if(session('alert-success'))
+                  <div class="alert alert-danger alert-dismissible fade in">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      {{session('alert-success')}}
+                  </div>
+              @endif
+
+              @if(session('alert-danger'))
+                  <div class="alert alert-danger alert-dismissible fade in">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      {{session('alert-danger')}}
+                  </div>
+              @endif
+
               <div>
-                <input type="text" class="form-control" placeholder="Tên đăng nhập" required="" />
+                <input type="email" class="form-control" placeholder="Email" name="email" required />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Mật khẩu" required="" />
+                <input type="password" class="form-control" placeholder="Mật khẩu" name="password" required />
               </div>
-              <div>
-                <a class="btn btn-login submit" href="index.html">Đăng nhập</a>
-              </div>
+
+              <button class="btn btn-login submit" type="submit">Đăng nhập</button>
 
               <div class="clearfix"></div>
             </form>
           </section>
 
           <div class="text-center">
-            <p>©2018 All Rights Reserved. March Fashion.</p>
+            <p style="color: #ccc">©2018 March Fashion. All Rights Reserved.</p>
           </div>
 
         </div>

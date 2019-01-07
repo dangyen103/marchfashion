@@ -37,7 +37,7 @@
                                 </label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <label class="control-label font-normal">
-                                        {{ $discount->start_time }}
+                                        {{ date('d/m/Y H:i', strtotime($discount->start_time)) }}
                                     </label>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 </label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <label class="control-label font-normal">
-                                        {{ $discount->finish_time }}
+                                        {{ date('d/m/Y H:i', strtotime($discount->finish_time)) }}
                                     </label>
                                 </div>
                             </div>
@@ -79,7 +79,11 @@
                                                 @foreach ($discount->products as $item)
                                                     <tr>
                                                         <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
-                                                        <td class="txt-center">{{ $item->name }}</td>
+                                                        <td class="txt-center">
+                                                            <a href="{{ asset("admin/product/".$item->id."/".$item->unsigned_name) }}" class="cl-blue">
+                                                                {{ $item->name }}
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

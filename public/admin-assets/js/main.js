@@ -243,6 +243,61 @@ $('#removeTableRow').click(function(){
     }
 });
 
+// --------------Phone row------------------
+$( document ).ready(function() {
+    var rows = $('#phoneInputGroup input').length;
+    if( rows == 1) {
+        $('#removePhoneRow').attr('style','background-color: #ccc; border-color: #ccc; cursor: not-allowed;');
+    }
+});
+
+// Add
+$( "#addPhoneRow" ).click(function() {
+    $('#phoneInputGroup').append(`<input name="contact_phones[]" type="text" class="form-control" placeholder="Nhập số điện thoại">`);
+    if( $('#removePhoneRow').attr('style') ){
+        $('#removePhoneRow').removeAttr('style');
+    }
+});
+
+//Remove
+$('#removePhoneRow').click(function(){
+    var rows = $('#phoneInputGroup input').length;
+    if( rows > 1) {
+        $('#phoneInputGroup input:last').remove();
+        var curRows =  $('#phoneInputGroup input').length;
+        if( curRows == 1) {
+            $('#removePhoneRow').attr('style','background-color: #ccc; border-color: #ccc; cursor: not-allowed;');
+        }
+    }
+});
+
+// --------------Shop row------------------
+$( document ).ready(function() {
+    var rows = $('#shopInputGroup input').length;
+    if( rows == 1) {
+        $('#removeShopRow').attr('style','background-color: #ccc; border-color: #ccc; cursor: not-allowed;');
+    }
+});
+
+// Add
+$( "#addShopRow" ).click(function() {
+    $('#shopInputGroup').append(`<input name="shop_addresses[]" type="text" class="form-control"placeholder="Nhập địa chỉ cửa hàng">`);
+    if( $('#removeShopRow').attr('style') ){
+        $('#removeShopRow').removeAttr('style');
+    }
+});
+
+//Remove
+$('#removeShopRow').click(function(){
+    var rows = $('#shopInputGroup input').length;
+    if( rows > 1) {
+        $('#shopInputGroup input:last').remove();
+        var curRows =  $('#shopInputGroup input').length;
+        if( curRows == 1) {
+            $('#removeShopRow').attr('style','background-color: #ccc; border-color: #ccc; cursor: not-allowed;');
+        }
+    }
+});
 // --------------------------------
 
 
@@ -324,8 +379,27 @@ CKEDITOR.replace('post-editor',{
     filebrowserImageUploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
 
 });
+
+CKEDITOR.replace('post-editor-1', {
+    // Adding drag and drop image upload.
+    uploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    filebrowserBrowseUrl: '/marchfashion/public/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: '/marchfashion/public/ckfinder/ckfinder.html?type=Images',
+    filebrowserUploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: '/marchfashion/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+});
 // ------------------------------------------
 
 
 // -------------------------------
+// Confirm password
+// -----------------------------
+// $('#password, #confirm_password').on('keyup', function () {
+//     if ($('#password').val() == $('#confirm_password').val()) {
+//       $('#message').html('Matching').css('color', 'green');
+//     } else 
+//       $('#message').html('Not Matching').css('color', 'red');
+// });
 // ---------------------------------

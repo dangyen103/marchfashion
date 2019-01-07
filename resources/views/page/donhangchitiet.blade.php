@@ -14,9 +14,9 @@
 			<div class="row mt-2 mb-4">
 				<div class="col-lg-2-5 pt-5 left-sidebar">
 					<ul id="left-nav" class="nav-sidebar-black">
-						<li><a href="#">Thông tin tài khoản</a></li>
-						<li><a href="#">Giỏ hàng</a></li>
-						<li><a href="#">Đơn hàng của tôi</a></li>
+						<li><a href="{{ asset("tai-khoan") }}">Thông tin tài khoản</a></li>
+						<li><a href="{{ asset("gio-hang") }}">Giỏ hàng</a></li>
+						<li><a class="active" href="{{ asset("don-hang") }}">Đơn hàng của tôi</a></li>
 					</ul>
 				</div>
 				<div class="col-md-12 col-lg-8-5">			
@@ -80,7 +80,7 @@
                                     <div class="order-items-block">
                                         <div class="row order-item-block">
                                             <div class="col-sm-7 col-md-6 col-lg-5 order-item-prod">
-                                                <img class="order-item-img" src="uploads/products/4hgpz-V03.jpg" alt="hình ảnh">
+                                                <img class="order-item-img" src="{{ asset("uploads/products/3hCxQ-A09.jpg") }}" alt="hình ảnh">
                                                 <div class="order-item-name">
                                                     Váy nơ tay lửng cổ tròn thiết kế mới 2018
                                                     <div class="order-item-price-xs">
@@ -100,7 +100,7 @@
                                         </div>
                                         <div class="row order-item-block">
                                             <div class="col-sm-7 col-md-6 col-lg-5 order-item-prod">
-                                                <img class="order-item-img" src="uploads/products/4hgpz-V03.jpg" alt="hình ảnh">
+                                                <img class="order-item-img" src="{{ asset("uploads/products/3hCxQ-A09.jpg") }}" alt="hình ảnh">
                                                 <div class="order-item-name">
                                                     Váy nơ tay lửng cổ tròn thiết kế mới 2018
                                                     <div class="order-item-price-xs">
@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="row order-item-block">
                                             <div class="col-sm-7 col-md-6 col-lg-5 order-item-prod">
-                                                <img class="order-item-img" src="uploads/products/4hgpz-V03.jpg" alt="hình ảnh">
+                                                <img class="order-item-img" src="{{ asset("uploads/products/3hCxQ-A09.jpg") }}" alt="hình ảnh">
                                                 <div class="order-item-name">
                                                     Váy nơ tay lửng cổ tròn thiết kế mới 2018
                                                     <div class="order-item-price-xs">
@@ -155,7 +155,7 @@
                                                 Đặng Thị Yến
                                             </div>
                                             <div class="order-detail-block-item">
-                                                Xóm 2 Bắc, xã Kim Nỗ, Đông Anh, Hà Nội, Hà Nội, Huyện Đông Anh, Xã Kim Nỗ
+                                                Xóm 2 Bắc, chợ Kim Nỗ, xã Kim Nỗ, huyện Đông Anh, Hà Nội
                                             </div>
                                             <div class="order-detail-block-item">
                                                 0985690342

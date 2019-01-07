@@ -5,7 +5,7 @@
         <div class="container-lf-3 px-15">
 			<div class="row mt-2">
 				<ul class="breadcrumb bg-tranf">
-					<li><a href="#">Trang chủ</a></li>
+					<li><a href="{{ route('trangchu') }}">Trang chủ</a></li>
 					<li>
 						<span>›</span>Đơn hàng của tôi
 					</li>
@@ -15,9 +15,9 @@
                 <!-- Left Sidebar -->
 				<div class="col-lg-2-5 pt-5 left-sidebar">
 					<ul id="left-nav" class="nav-sidebar-black">
-						<li><a href="#">Thông tin tài khoản</a></li>
-						<li><a href="#">Giỏ hàng</a></li>
-						<li><a href="#">Đơn hàng của tôi</a></li>
+						<li><a class="active"href="{{ asset("tai-khoan") }}">Thông tin tài khoản</a></li>
+						<li><a href="{{ asset("gio-hang") }}">Giỏ hàng</a></li>
+						<li><a href="{{ asset("don-hang") }}">Đơn hàng của tôi</a></li>
 					</ul>
                 </div>
                 <!-- End Left Sidebar -->
@@ -35,7 +35,7 @@
                                         Họ tên
                                     </div>
                                     <div class="account-item-value">
-                                        Đặng Thị Yến
+                                        {{ Auth::user()->name }}
                                     </div>
                                 </div>
                                 <div class="col-sm-4 account-item mb-30">
@@ -43,7 +43,7 @@
                                         Email
                                     </div>
                                     <div class="account-item-value">
-                                        dangthiyen103@gmail.com
+                                        {{ Auth::user()->email }}
                                     </div>
                                 </div>
                                 <div class="col-sm-4 account-item mb-30">
@@ -51,7 +51,7 @@
                                         Số điện thoại
                                     </div>
                                     <div class="account-item-value">
-                                        0985690342
+                                        {{ Auth::user()->customer->phone }}
                                     </div>
                                 </div>
                                 <div class="col-sm-4 account-item mb-30">
@@ -59,7 +59,7 @@
                                         Ngày sinh
                                     </div>
                                     <div class="account-item-value">
-                                        10/03/1996
+                                        {{ date('d/m/Y', strtotime(Auth::user()->customer->birthday)) }}
                                     </div>
                                 </div>
                                 <div class="col-sm-4 account-item mb-30">
@@ -67,7 +67,11 @@
                                         Giới tính
                                     </div>
                                     <div class="account-item-value">
-                                        Nữ
+                                        @if (Auth::user()->customer->gender == 0)
+                                            Nữ
+                                        @else
+                                            Nam
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-12 btn-account-info-edit">

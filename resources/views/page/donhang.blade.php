@@ -5,7 +5,7 @@
         <div class="container-lf-3 px-15">
 			<div class="row mt-2">
 				<ul class="breadcrumb bg-tranf">
-					<li><a href="#">Trang chủ</a></li>
+					<li><a href="{{ route("trangchu") }}">Trang chủ</a></li>
 					<li>
 						<span>›</span>Đơn hàng của tôi
 					</li>
@@ -14,9 +14,9 @@
 			<div class="row mt-2 mb-4">
 				<div class="col-lg-2-5 pt-5 left-sidebar">
 					<ul id="left-nav" class="nav-sidebar-black">
-						<li><a href="#">Thông tin tài khoản</a></li>
-						<li><a href="#">Giỏ hàng</a></li>
-						<li><a href="#">Đơn hàng của tôi</a></li>
+						<li><a href="{{ asset("tai-khoan") }}">Thông tin tài khoản</a></li>
+						<li><a href="{{ asset("gio-hang") }}">Giỏ hàng</a></li>
+						<li><a class="active" href="{{ asset("don-hang") }}">Đơn hàng của tôi</a></li>
 					</ul>
 				</div>
 				<div class="col-md-12 col-lg-8-5">			

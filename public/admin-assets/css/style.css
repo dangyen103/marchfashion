@@ -53,6 +53,10 @@ input:active:focus{
     font-weight: normal !important;
 }
 
+.font-size-20{
+    font-size: 20px;
+}
+
 .d-flex-right{
     display: flex;
     display: -ms-flexbox !important;
@@ -86,6 +90,8 @@ input:active:focus{
 .justify-content-between{
     justify-content: space-between;
 }
+
+
 
 @media (min-width: 768px) {
   .w-md-50{
@@ -141,6 +147,10 @@ input:active:focus{
     padding-left: 0;
 }
 
+.px-0{
+    padding-left: 0;
+    padding-right: 0;
+}
 @media(min-width: 768px){
     .pr-md-5{
         padding-right: 5rem;
@@ -153,6 +163,11 @@ input:active:focus{
 
 .cl-blue{
     color: #39b2d5;
+}
+
+a.cl-blue:hover{
+    color: #39b2d5;
+    text-decoration: underline;
 }
 
 .cl-red{
@@ -282,9 +297,35 @@ a#menu_toggle{
 /* ------------------------------ */
 /* [Login Page] */
 /* ----------------------------- */
+.login{
+    background-image: url('../images/login-bg.png');
+}
+
+.login::after{
+    content: "";
+    position: absolute;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+}
+
+.login_wrapper{
+    display: inline-block;
+    position: fixed;
+    z-index: 21;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 350px;
+    height: 306px;
+    margin: auto;
+}
+
 .login_content{
-    background-color: #ffffff;
-    border-radius: .2rem;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: .5rem;
     padding: 1rem 2rem;
     box-shadow: 0 0 8px rgba(0, 0, 0, .25);
     margin-bottom: 1.5rem;
@@ -292,15 +333,18 @@ a#menu_toggle{
 
 .login_content input{
     box-shadow: none !important;
+    border-radius: .5rem !important;
+    padding: 1.8rem 1rem;
 }
 
 .btn-login{
-    background-color: #444444;
+    background-color: #000;
     padding: .75rem 1rem;
-    border-radius: .2rem;
+    border-radius: .5rem;
     font-style: none;
     text-shadow: none;
     color: #ffffff;
+    margin: 0;
     text-transform: uppercase;
 }
 
@@ -308,7 +352,8 @@ a#menu_toggle{
 .btn-login:focus,
 .btn-login:active{
     color: #ffffff;
-    background-color: #000000;
+    background-color: #000;
+    font-weight: bold;
     text-decoration: none !important;
 }
 
@@ -405,6 +450,11 @@ a#menu_toggle{
     margin-top: .5rem;
 }
 
+#phoneInputGroup input,
+#shopInputGroup input{
+    margin-bottom: .5rem;
+}
+
 .form-group img.prod-thumbnail{
     width: 35%;
     margin-bottom: 1rem;
@@ -433,7 +483,7 @@ a#menu_toggle{
 
 .image-checkbox-checked {
     border-color: #ccc;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .25);
 }
 .image-checkbox .fa {
   position: absolute;
@@ -464,6 +514,14 @@ a#menu_toggle{
     position: absolute;
     width: 100%;
     opacity: 0;
+}
+
+.form-section-title{
+    margin: 0 10px 10px 10px;
+    padding-top: 15px;
+    font-weight: 400 !important;
+    font-size: 19px !important;
+    border-top: 1px solid #ccc; 
 }
 /* --------------------- */
 
@@ -667,5 +725,27 @@ ul.wizard_steps{
 
 .alert-dismissable .close, .alert-dismissible .close{
     color: #fff;
+}
+
+.top_nav li a i {
+    vertical-align: text-bottom;
+    margin-right: .3rem;
+}
+
+.fa-angle-down:before {
+    margin-left: .3rem;
+}
+
+.main_menu .fa {
+    vertical-align: middle;
+}
+
+.theme-setting-input img.theme-setting-img{
+    padding: .5rem;
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .25);
+    border-radius: .5rem;
+    margin: .5rem 0;
+    border: 1px solid #ccc;
 }
 /* ------------------- */

@@ -257,3 +257,80 @@ var scrollOptions = {
     scrollPollInterval: 20
 }
 // $('.flipInX').AniView(scrollOptions);
+
+
+
+// -------------------------------------------------
+// VUE JS ////////////////////////////////////////////
+// ---------------------------------------------------
+var prodMenu = new Vue({
+    el: '#prodMenu',
+    data: {
+      message: 'Do you wanna build a Vue app?',
+      isTopNone: 'none',
+      isPantsNone: 'none',
+      isDressNone: 'none',
+      isSetNone: 'none',
+      isAccessNone: 'none',
+    },
+    methods:{
+        showTopMenu: function (){
+            if(this.isTopNone == 'none'){
+                this.isTopNone = 'block';
+            }
+            else{
+                this.isTopNone = 'none';
+            }
+        },
+        showPantsMenu: function (){
+            if(this.isPantsNone == 'none'){
+                this.isPantsNone = 'block';
+            }
+            else{
+                this.isPantsNone = 'none';
+            }
+        },
+        showDressMenu: function (){
+            if(this.isDressNone == 'none'){
+                this.isDressNone = 'block';
+            }
+            else{
+                this.isDressNone = 'none';
+            }
+        },
+        showSetMenu: function (){
+            if(this.isSetNone == 'none'){
+                this.isSetNone = 'block';
+            }
+            else{
+                this.isSetNone = 'none';
+            }
+        },
+        showAccessMenu: function (){
+            if(this.isAccessNone == 'none'){
+                this.isAccessNone = 'block';
+            }
+            else{
+                this.isAccessNone = 'none';
+            }
+        }
+    },
+    computed:{
+
+    }
+});
+
+var prodCart = new Vue({
+    el: '#prodCart',
+    data: {
+        isShowCartCheckout: false,
+        isShowBuyBtn: true
+    },
+    methods: {
+        showCartCheckout: function(){
+            this.isShowCartCheckout = true;
+            this.isShowBuyBtn = false;
+        }
+    }
+});
+// -----------------------------------------------------

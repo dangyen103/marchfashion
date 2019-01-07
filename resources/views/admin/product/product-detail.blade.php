@@ -60,12 +60,15 @@
                             <div class="mb-3">
                                 <h2>Mô tả</h2>
                                 <p>{{ $product->description }}</p>
-                            </div>            
-    
-                            <div class="">
-                                <a href="{{ asset("admin/product/$product->id/$product->name/edit") }}" class="btn btn-info">Chỉnh sửa</a>
-                                <a href="{{ asset("admin/product/$product->id/$product->name/delete") }}" class="btn btn-danger">Xóa</a>
-                            </div>
+                            </div>     
+
+                            @can('prod-manager')
+                                <div class="">
+                                    <a href="{{ asset("admin/product/$product->id/$product->name/edit") }}" class="btn btn-info">Chỉnh sửa</a>
+                                    <a href="{{ asset("admin/product/$product->id/$product->name/delete") }}" class="btn btn-danger">Xóa</a>
+                                </div>
+                            @endcan
+
                         </div>
 
                         <div class="col-xs-12 mt-3">

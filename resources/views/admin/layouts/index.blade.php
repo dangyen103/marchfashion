@@ -18,8 +18,6 @@
     <link href="{{ asset('admin-assets/libs/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('admin-assets/libs/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="{{ asset('admin-assets/libs/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="{{ asset('admin-assets/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet"/>
     <!-- Datatables -->
@@ -64,7 +62,7 @@
     <!-- Bootstrap -->
     <script src="{{ asset('admin-assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{ asset('admin-assets/libs/fastclick/lib/fastclick.js') }}"></script>
+    {{-- <script src="{{ asset('admin-assets/libs/fastclick/lib/fastclick.js') }}"></script> --}}
     {{-- <!-- NProgress -->
     <script src="{{ asset('admin-assets/libs/nprogress/nprogress.js') }}"></script>
     <!-- jQuery Smart Wizard -->
@@ -72,15 +70,16 @@
     <!-- jQuery custom content scroller -->
     <script src="{{ asset('admin-assets/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <!-- iCheck -->
-    <script src="{{ asset('admin-assets/libs/iCheck/icheck.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin-assets/libs/iCheck/icheck.min.js') }}"></script> --}}
     <!-- Select2 -->
     <script src="{{ asset('admin-assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- Datatables -->
     <script src="{{ asset('admin-assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/jszip/dist/jszip.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin-assets/libs/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('admin-assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('admin-assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+
     <!-- CKeditor -->
     <script src="{{ asset('admin-assets/libs/ckeditor/ckeditor.js') }}"></script>
 

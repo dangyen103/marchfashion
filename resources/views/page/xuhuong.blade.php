@@ -7,7 +7,7 @@
         <div class="container-lf-3 px-15">
 			<div class="row mt-2">
 				<ul class="breadcrumb bg-tranf">
-					<li><a href="#">Trang chủ</a></li>
+					<li><a href="{{ route('trangchu')}}">Trang chủ</a></li>
 					<li>
 						<span>›</span>Xu hướng
 					</li>
@@ -15,94 +15,22 @@
 			</div>
 
 			<div class="row mt-2">
-				<div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/gQaBK-B23.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/gfaCb-photo-7-15269503150391483364789-edit.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
+				@foreach ($posts as $item)
+                    <div class="col-md-6 col-lg-3 mb-30">
+                        <div class="post-card">
+                            <div class="post-card-img">
+                                <img src="{{ asset("uploads/posts/$item->image") }}" alt="hình ảnh" width="100%">
+                            </div>
+                            <div class="post-card-info">
+                                <a href="{{ asset("xu-huong/$item->id/$item->unsigned_title") }}"><h4 class="post-card-title">{{ $item->title }}</h4></a>
+                                <p class="post-card-description">{{ $item->description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/FcUqO-112.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/Numxo-photo-15-1526863728656470351668-edit.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/gQaBK-B23.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/gfaCb-photo-7-15269503150391483364789-edit.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/FcUqO-112.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-30">
-                    <div class="post-card">
-                        <div class="post-card-img">
-                            <img src="uploads/posts/Numxo-photo-15-1526863728656470351668-edit.jpg" alt="hình ảnh" width="100%">
-                        </div>
-                        <div class="post-card-info">
-                            <a href="#"><h4 class="post-card-title">Mách nàng mix đồ dạo phố cực trend mùa đông này</h4></a>
-                            <p class="post-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach 
+                <div class="col-12 pagination-group">
+					{{ $posts->links() }}
+				</div>
 			</div>
 		</div>
 		<!-- End Post List -->

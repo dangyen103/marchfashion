@@ -54,8 +54,8 @@
                                     <tr>
                                         <td class="txt-center">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</td>
                                         <td class="txt-center">{{ $item->discountValue }}</td>
-                                        <td class="txt-center">{{ $item->start_time }}</td>
-                                        <td class="txt-center">{{ $item->finish_time }}</td>
+                                        <td class="txt-center">{{ date('d/m/Y H:i', strtotime($item->start_time)) }}</td>
+                                        <td class="txt-center">{{ date('d/m/Y H:i', strtotime($item->finish_time)) }}</td>
                                         <td>{{ $item->description }}</td>
                                         <td class="txt-center">
                                             <a href="{{ asset("admin/discount/$item->id/detail") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">

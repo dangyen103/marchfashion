@@ -10,6 +10,7 @@
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="d-flex-right">
+                        {{-- <a href="{{ asset("admin/order/$order->id/edit") }}" title="Chỉnh sửa" class="btn btn-dark"><i class="fa fa-edit"></i></a> --}}
                         <a href="{{ asset("admin/order") }}" class="btn btn-dark"><i class="fa fa-reply"></i></a>
                     </div>
                 </div>
@@ -52,7 +53,7 @@
                                 </p>
                             </div>
                             <div class="txt-right">
-                                <h5>
+                                <h5 class="mt-0">
                                     Tổng cộng: 
                                     <span class="cl-red">
                                         {{ number_format($order->total, 0, ',', '.') }} ₫
@@ -61,7 +62,19 @@
                                 @if ($order->cancel_status == 0 && $order->status != 3)
                                     <div class="d-flex-right">
                                         <a href="{{ asset("admin/order/$order->id/cancel") }}" class="btn btn-danger btn-sm mb-0">Hủy đơn</a>
-                                        <a href="{{ asset("admin/order/$order->id/change-status") }}" class="btn btn-info btn-sm mr-0 mb-0">{{ $order_action }}</a>
+                                        @if ($order->status == 0)
+                                            @if (Gate::check('order-manager') || Gate::check('confirmOrder'))
+                                                <a href="{{ asset("admin/order/$order->id/change-status") }}" class="btn btn-success btn-sm mr-0 mb-0">Xác nhận</a> 
+                                            @endif
+                                        @elseif ($order->status == 1)
+                                            @if (Gate::check('order-manager') || Gate::check('packingOrder'))
+                                                <a href="{{ asset("admin/order/$order->id/change-status") }}" class="btn btn-success btn-sm mr-0 mb-0">Hoàn tất đóng gói</a> 
+                                            @endif
+                                        @elseif($order->status == 2)
+                                            @if (Gate::check('order-manager') || Gate::check('shippingOrder'))
+                                                <a href="{{ asset("admin/order/$order->id/change-status") }}" class="btn btn-success btn-sm mr-0 mb-0">Đã giao hàng</a> 
+                                            @endif
+                                        @endif 
                                     </div>
                                 @endif
                             </div>
@@ -204,7 +217,7 @@
                         </div>
                         <!-- End SmartWizard Content -->
 
-                        <div class="table-reponsive mt-3">
+                        <div class="table-reponsive mt-3" style="overflow:auto">
                             <table id="detailProdTable" class="table table-bordered table-hover mb-0">
                                 <thead>
                                     <tr>        
@@ -213,8 +226,10 @@
                                         <th class="txt-center">Màu sắc</th>
                                         <th class="txt-center">Kích thước</th>
                                         <th class="txt-center">Đơn giá</th>
+                                        <th class="txt-center">Khuyến mại</th>
+                                        <th class="txt-center">Giá sau giảm</th>
                                         <th class="txt-center">Số lượng</th>
-                                        <th class="txt-center">Giảm giá (%)</th>
+                                        <th class="txt-center">Thành tiền</th>
                                     </tr>
                                 </thead>
                                 <tbody class="prod-detail-form">
@@ -225,15 +240,19 @@
                                                 <div class="d-flex align-items-center">
                                                     <img src="{{ asset("uploads/products/".$item->product->thumbnail) }}" alt="hình ảnh" width="80px">
                                                     <div class="ml-1">
-                                                        {{ $item->product->name }}
+                                                        <a href="{{ asset("admin/product/".$item->product->id."/".$item->product->unsigned_name) }}" class="cl-blue">
+                                                            {{ $item->product->name }}
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="txt-center">{{ $item->color }}</td>
                                             <td class="txt-center">{{ $item->size }}</td>
                                             <td class="txt-center">{{ number_format($item->product->price, 0, ',', '.') }} ₫</td>
+                                            <td class="txt-center">{{ $item->pivot->order_discount }} %</td>
+                                            <td class="txt-center">{{ number_format($item->product->price*(100 - $item->pivot->order_discount)/100, 0, ',', '.') }} ₫</td>
                                             <td class="txt-center">{{ $item->pivot->order_quantity }}</td>
-                                            <td class="txt-center">{{ $item->pivot->order_discount }}</td>
+                                            <td class="txt-center cl-red">{{ number_format($item->pivot->order_quantity*$item->product->price*(100 - $item->pivot->order_discount)/100, 0, ',', '.') }} ₫</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -242,37 +261,48 @@
 
                         <div class="ln_solid"></div>
 
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-sm-12 col-lg-6 pl-0">
+                        <div class="">
+                            <div class="col-xs-12 col-sm-5 col-md-5 px-0">
                                 <h5>Thông tin người nhận</h5>
-                                <div class="order-receiver-info">
-                                    <span class="cl-gray">Họ tên: </span>
-                                    {{ $order->receiver_name }}
-                                </div>
-                                <div class="order-receiver-info">
-                                    <span class="cl-gray">SĐT: </span>
-                                    {{ $order->receiver_phone }}
-                                </div>
-                                <div class="order-receiver-info">
-                                    <span class="cl-gray">Địa chỉ: </span>
-                                    {{ $order->receiver_address.', '.$order->receiver_district.', '.$order->receiver_city }}
-                                </div>
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr>
+                                            <td>Họ tên </td>
+                                            <td class="txt-right">{{ $order->receiver_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số điện thoại </td>
+                                            <td class="txt-right">{{ $order->receiver_phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Địa chỉ </td>
+                                            <td class="txt-right">{{ $order->receiver_address.', '.$order->receiver_district.', '.$order->receiver_city }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="col-xs-12 col-sm-2 col-md-2 px-0">
                             </div>
 
-                            <div class="col-sm-12 col-lg-6 pl-0">
+                            <div class="col-xs-12 col-sm-5 col-md-5 px-0">
                                 <h5>Tổng cộng</h5>
-                                <div class="order-receiver-info">
-                                    <span class="cl-gray">Tạm tính: </span>
-                                    {{ number_format($order->total - $order->shipping_price, 0, ',', '.') }} ₫
-                                </div>
-                                <div class="order-receiver-info">
-                                    <span class="cl-gray">Phí vận chuyển: </span>
-                                    {{ number_format($order->shipping_price, 0, ',', '.') }} ₫
-                                </div>
-                                <div class="order-receiver-info">
-                                    <span class="cl-gray">Tổng: </span>
-                                    {{ number_format($order->total, 0, ',', '.') }} ₫
-                                </div>
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr>
+                                            <td>Tạm tính </td>
+                                            <td class="txt-right">{{ number_format($order->total - $order->shipping_price, 0, ',', '.') }} ₫</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phí vận chuyển </td>
+                                            <td class="txt-right">{{ number_format($order->shipping_price, 0, ',', '.') }} ₫</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tổng cộng </td>
+                                            <td class="txt-right cl-red" style="font-size: 14px;">{{ number_format($order->total, 0, ',', '.') }} ₫</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -87,7 +87,9 @@
                                             <a href="{{ asset("admin/order/$item->id") }}" title="Xem chi tiết" class="btn btn-success btn-xs btn-action">
                                                 <i class="fa fa-info"></i>
                                             </a>
-                                                                                      
+                                            {{-- <a href="{{ asset("admin/order/$item->id/edit") }}" title="Chỉnh sửa" class="btn btn-info btn-xs  btn-action">
+                                                <i class="fa fa-edit"></i>
+                                            </a>                                                               --}}
                                         </td>
                                     </tr>
                                 @endforeach

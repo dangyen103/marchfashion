@@ -5,7 +5,7 @@
         <div class="container-lf-3 px-15">
 			<div class="row mt-2">
 				<ul class="breadcrumb bg-tranf">
-					<li><a href="#">Trang chủ</a></li>
+					<li><a href="{{ route("trangchu") }}">Trang chủ</a></li>
 					<li>
 						<span>›</span>Giỏ hàng
 					</li>
@@ -14,9 +14,9 @@
 			<div class="row mt-2 mb-4">
 				<div class="col-lg-2-5 pt-5 left-sidebar">
 					<ul id="left-nav" class="nav-sidebar-black">
-						<li><a href="#">Thông tin tài khoản</a></li>
-						<li><a href="#">Giỏ hàng</a></li>
-						<li><a href="#">Quản lý đơn hàng</a></li>
+						<li><a href="{{ asset("tai-khoan") }}">Thông tin tài khoản</a></li>
+						<li><a class="active" href="{{ asset("gio-hang") }}">Giỏ hàng</a></li>
+						<li><a href="{{ asset("don-hang") }}">Quản lý đơn hàng</a></li>
 					</ul>
 				</div>
 				<div class="col-md-12 col-lg-8-5">			
@@ -38,7 +38,7 @@
 						</div>
 					</div>
 
-					<div class="row cart-area mx-0 mb-4">
+					<div class="row cart-area mx-0 mb-4" id="prodCart">
 						<div class="col-12">
                             <table id="cart" class="table table-hover table-condensed">
                                 <thead>
@@ -57,7 +57,10 @@
                                             <div class="row">
                                                 <div class="col-12 d-flex align-items-center mt-2 mt-md-0">
                                                     <img class="cart-prod-img" src="uploads/products/3hCxQ-A09.jpg" alt="hình ảnh"/>
-                                                    <h6 class="ml-3 cart-prod-name">Áo nơ tay lửng thêu hoa</h6>
+                                                    <div class="ml-3 cart-prod-name">Áo nơ tay lửng thêu hoa
+														<div class="sub-info">Màu sắc: Trắng</div>
+														<div class="sub-info">Kích thước: Freesize</div>
+													</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -84,7 +87,10 @@
                                             <div class="row">
                                                 <div class="col-12 d-flex align-items-center mt-2 mt-md-0">
                                                     <img class="cart-prod-img" src="uploads/products/3hCxQ-A09.jpg" width="100px" height="150px" alt="hình ảnh"/>
-                                                    <h6 class="ml-3 cart-prod-name">Áo nơ tay lửng thêu hoa</h6>
+                                                    <div class="ml-3 cart-prod-name">Áo nơ tay lửng thêu hoa
+														<div class="sub-info">Màu sắc: Trắng</div>
+														<div class="sub-info">Kích thước: M</div>
+													</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -116,13 +122,17 @@
                                         <td class="hidden-xs text-center">
                                             <strong>Tổng cộng: <span class="cl-red">180000₫</span></strong>
                                         </td>
-                                        <td><a href="#" class="btn btn-orage btn-block">Mua hàng</a></td>
+										<td><button 
+											v-on:click="showCartCheckout"
+											v-if="isShowBuyBtn"
+											class="btn btn-orage btn-block">Mua hàng</button>
+										</td>
                                     </tr>
                                 </tfoot>
                             </table>
 						</div>
 						
-						<div class="col-12 cart-checkout">
+						<div class="col-12 cart-checkout" v-if="isShowCartCheckout">
 							<div class="cart-checkout-title">
 								<h5 class="txt-center mt-3 mb-4">Thông tin đơn hàng<h5>
 							</div>

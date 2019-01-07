@@ -165,7 +165,7 @@
                                         class="form-control" 
                                         placeholder="Nhập các nhãn liên quan"
                                         name="label">{{ $product->label }}</textarea>
-                                    <span class="input-suggestion">eg. Mùa xuân, Mùa hè, Mùa thu, Mùa đông,
+                                    <span class="input-suggestion">eg. Nóng, Mát mẻ, Lạnh,
                                     Classic, Bohemian, Preppy, Surfer Chic, Fashionista, Suburbanite...</span>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@
                                                                     class="form-control"
                                                                     required
                                                                     value="{{ $item->quantity }}"
-                                                                    min="1"
+                                                                    min="0"
                                                                     type="number">
                                                         </td>
                                                     </tr>

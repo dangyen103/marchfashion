@@ -108,7 +108,7 @@
                                                 <tr>        
                                                     <th class="txt-center" style="width: 20%">ID</th>
                                                     <th class="txt-center" style="width: 60%">Tên</th>
-                                                    <th class="txt-center" style="width: 20%">Checked</th>
+                                                    <th class="txt-center" style="width: 20%">Chọn</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="prod-detail-form">
@@ -138,8 +138,7 @@
                                     <label class="mt-1 font-normal">Thêm sản phẩm khuyến mại</label>
                                     <select class="select-multiple form-control" 
                                             name="products[]" 
-                                            multiple="multiple"
-                                            required>
+                                            multiple="multiple">
                                         @foreach ($products as $item)
                                             <option value="{{ $item->id }}">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT)." - $item->name" }}</option>
                                         @endforeach

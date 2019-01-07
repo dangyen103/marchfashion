@@ -5,25 +5,155 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminPasswordMail;
 use App\User;
 use App\Customer;
 use App\Adminitrator;
 use App\Role;
-use App\Mail\AdminPasswordMail;
+use App\ThemeSetting;
 use Mail;
 
 class UserController extends Controller
 {
-    public function dangnhapAdmin()
+    public function getAdminLogin()
     {
-
+        return view('admin.login');
     }
 
-    public function dangxuatAdmin()
+    public function postAdminLogin(Request $request)
     {
+        $this->validate($request,
+        [
+            'email'=>'required',
+            'password' => 'required'
+        ],
+        [
+            'email.required' => 'Bạn chưa nhập địa chỉ e-mail',
+            'password.required' => 'Bạn chưa nhập mật khẩu'
+        ]);
 
+        if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password]))
+        {
+            $user = Auth::user();
+            if ($user->level == 1) {
+                foreach ($user->adminitrator->roles as $role) {
+                    if($role->code == 'adminitrator')
+                    {
+                        return redirect('admin/user');
+                    }
+    
+                    if($role->code == 'prodManager')
+                    {
+                        return redirect('admin/product');
+                    }
+    
+                    if($role->code == 'setManager')
+                    {
+                        return redirect('admin/set');
+                    }
+    
+                    if($role->code == 'discManager')
+                    {
+                        return redirect('admin/discount');
+                    }
+    
+                    if($role->code == 'postManager')
+                    {
+                        return redirect('admin/post');
+                    }
+    
+                    if($role->code == 'orderManager')
+                    {
+                        return redirect('admin/order');
+                    }
+    
+                    if($role->code == 'confirmOrder')
+                    {
+                        return redirect('admin/order/confirm');
+                    }
+    
+                    if($role->code == 'packingOrder')
+                    {
+                        return redirect('admin/order/packing');
+                    }
+    
+                    if($role->code == 'shippingOrder')
+                    {
+                        return redirect('admin/order/shipping');
+                    }
+                }
+            } 
+            else {
+                return redirect('admin/login')->with('alert-danger','Sai thông tin đăng nhập');
+            }
+            
+           
+        }
+        else
+        {
+            return redirect('admin/login')->with('alert-danger','Sai thông tin đăng nhập');
+        }
+    }
+
+    public function getAdmin(){
+
+        $user = Auth::user();
+        
+        foreach ($user->adminitrator->roles as $role) {
+            if($role->code == 'adminitrator')
+            {
+                return redirect('admin/user');
+            }
+
+            if($role->code == 'prodManager')
+            {
+                return redirect('admin/product');
+            }
+
+            if($role->code == 'setManager')
+            {
+                return redirect('admin/set');
+            }
+
+            if($role->code == 'discManager')
+            {
+                return redirect('admin/discount');
+            }
+
+            if($role->code == 'postManager')
+            {
+                return redirect('admin/post');
+            }
+
+            if($role->code == 'orderManager')
+            {
+                return redirect('admin/order');
+            }
+
+            if($role->code == 'confirmOrder')
+            {
+                return redirect('admin/order/confirm');
+            }
+
+            if($role->code == 'packingOrder')
+            {
+                return redirect('admin/order/packing');
+            }
+
+            if($role->code == 'shippingOrder')
+            {
+                return redirect('admin/order/shipping');
+            }
+        }
+    }
+
+    public function getAdminLogout()
+    {
+        Auth::logout();
+        return redirect('admin/login');
     }
 
     public function getUserList()
@@ -150,8 +280,139 @@ class UserController extends Controller
         return view('admin.change-password');
     }
 
-    public function postAdminChangePassword()
+    public function postAdminChangePassword(Request $request)
     {
-        return view('admin.change-password');
+        $user = Auth::user();
+
+        if(Hash::check($request->current_password, $user->password)){
+            if ($request->newpassword == $request->confirm_newpassword) {
+
+                $this->validate($request,
+                [
+                    'newpassword' => 'min:8|max:190',
+                ],
+                [
+                    'newpassword.min' => 'Mật khẩu phải có ít nhất 8 kí tự',
+                    'newpassword.max' => 'Mật khẩu quá dài. Vui lòng nhập không quá 190 kí tự'
+
+                ]);
+
+                $user->password = Hash::make($request->newpassword);
+                $user->save();
+            }
+            else {
+                return redirect()->back()->with('alert-danger', 'Xác nhận mật khẩu mới không trùng khớp');
+            }
+        }
+        else {
+            return redirect()->back()->with('alert-danger', 'Mật khẩu không đúng');
+        }
+
+        return redirect('admin/change-password')->with('alert-success','Đổi mật khẩu thành công!');
+    }
+
+    public function getThemeSetting()
+    {
+        $theme = ThemeSetting::find(1);
+        $contact_phones = explode("*", $theme->contact_phone);
+        $shop_addresses = explode("*", $theme->shop_address);
+        $home_banners = explode("*", $theme->home_banner);
+        $prod_banners = explode("*", $theme->prod_banner);
+
+        return view('admin.theme-setting', compact('theme','contact_phones',
+                                                    'shop_addresses', 'home_banners', 'prod_banners'));
+    }
+
+    public function postThemeSetting(Request $request)
+    {
+
+        $theme = ThemeSetting::find(1);
+        $theme->about_post = $request->about_post;
+        $theme->hire_post = $request->hire_post;
+        $theme->contact_email = $request->contact_email;
+        $theme->contact_phone = implode( "*", $request->contact_phones);
+        $theme->shop_address = implode( "*", $request->shop_addresses);
+
+        //upload logo
+        $logo_file = $request->file('logo');
+        if ($request->hasFile('logo')) {
+            $logo_name = $logo_file->getClientOriginalName();
+
+            // unlink("uploads/theme/$theme->logo");
+            $logo_file->move('uploads/theme', $logo_name);
+            $theme->logo = $logo_name;
+        }
+        
+
+        //upload home-banner
+        $home_banner_names = array(0 => '', 
+                                1 => '',
+                                2 => '',
+                                3 => '',
+                                4 => '');
+
+        $home_banners = $request->file('home_banners');
+
+        if($request->hasFile('home_banners'))
+        {
+            foreach ($home_banners as $key => $image) 
+            {
+                $image_name = $image->getClientOriginalName();
+                // unlink("uploads/theme/$home_banner_names[$key]");
+
+                $image->move('uploads/theme', $image_name);
+                $home_banner_names[$key] = $image_name;
+            }
+
+            //save home banner to db
+            $theme->home_banner = implode( "*", $home_banner_names);
+        }
+
+
+        //upload prod-banner
+        $prod_banner_names = array(0 => '', 
+                                1 => '',
+                                2 => '',
+                                3 => '',
+                                4 => '');
+
+        $prod_banners = $request->file('prod_banners');
+
+        if($request->hasFile('prod_banners'))
+        {
+            foreach ($prod_banners as $key => $image) 
+            {
+                $image_name = $image->getClientOriginalName();
+                // unlink("uploads/theme/$home_banner_names[$key]");
+
+                $image->move('uploads/theme', $image_name);
+                $prod_banner_names[$key] = $image_name;
+            }
+
+            //save prod banner to db
+            $theme->prod_banner = implode( "*", $prod_banner_names);
+        }
+        
+
+
+        //upload about banner
+        $about_banner_file = $request->file('about_banner');
+        if ($request->hasFile('about_banner')) {
+            $about_banner_name = $about_banner_file->getClientOriginalName();
+
+            // unlink("uploads/theme/$theme->logo");
+            $about_banner_file->move('uploads/theme', $about_banner_name);
+            $theme->about_banner = $about_banner_name;
+        }
+
+        $theme->save();
+
+        // echo json_encode($theme);
+        // echo "<br>";
+        // // echo json_encode($request);
+
+        // return view('test');
+
+        return redirect()->back()->with('alert-success', 'Đã lưu chỉnh sửa!');
     }
 }

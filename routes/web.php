@@ -12,26 +12,15 @@ use App\User;
 |
 */
 
-Route::get('test', function () {
+// Route::get('test', function () {
 
-    // $dist = array("Đông Anh","Cầu Giấy","Hoàng Mai","Ba Đình","Thanh Xuân");
+//     $week = strtotime(date("Y-m-d") . " +1 week");
+// 	$week = strftime("%Y-%m-%d", strtotime(date("Y-m-d") . " -1 week"));
+// 	echo "A week later is ". $week;
+//     return view('test');
+// });
 
-    // echo $dist[array_rand($dist, 1)];
-
-	// $u = User::where('level', 0)->inRandomOrder();
-
-	// $date = getdate();
-
-	// $cur_year = $date['year'];
-	// $cur_month = date('m', strtotime($date['month']));
-
-	// echo $cur_month."<br>";
-	// echo $cur_year;
-
-    return view('mails.confirm-order');
-});
-
-Route::post('test', 'Admin\ProductController@test');
+Route::get('test', 'PageController@test');
 
 
 Auth::routes();
@@ -39,21 +28,28 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+//Admin Login
+Route::get('admin/login', 'Admin\UserController@getAdminLogin');
+Route::post('admin/login', 'Admin\UserController@postAdminLogin');
+
+//Admin logout
+Route::get('admin/logout', 'Admin\UserController@getAdminLogout');
+
 
 //Admin
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminlogin'], function(){
 
-	//General
-	Route::get('', 'Admin\ProductController@getProductList');
+	// //General
+	Route::get('', 'Admin\UserController@getAdmin');
 
-	Route::get('login', 'Admin\UserController@getAdminLogin');
-	Route::get('logout', 'Admin\UserController@getAdminLogout');
+	Route::get('theme-setting','Admin\UserController@getThemeSetting')->middleware('can:adminitrator');
+	Route::post('theme-setting','Admin\UserController@postThemeSetting')->middleware('can:adminitrator');
 
 	Route::get('change-password','Admin\UserController@getAdminChangePassword');
 	Route::post('change-password','Admin\UserController@postAdminChangePassword');
 
 	//User
-	Route::group(['prefix'=>'user'], function(){
+	Route::group(['prefix'=>'user', 'middleware'=>'can:user-manager'], function(){
 
 		Route::get('','Admin\UserController@getUserList');
 		Route::get("{id}/detail",'Admin\UserController@getUserDetail');
@@ -84,7 +80,7 @@ Route::group(['prefix'=>'admin'], function(){
 	});
 
 	//Set
-	Route::group(['prefix'=>'set'], function(){
+	Route::group(['prefix'=>'set', 'middleware'=>'can:set-manager'], function(){
 
 		Route::get('','Admin\SetController@getSetList');
 		Route::get('{id}/detail', 'Admin\SetController@getSetDetail');
@@ -108,6 +104,7 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('completed','Admin\OrderController@getCompletedList');
 		
 		Route::get('{id}','Admin\OrderController@getOrderDetail');
+		// Route::get('{id}/edit','Admin\OrderController@getOrderEdit');
 
 		Route::get('{id}/cancel','Admin\OrderController@getOrderCancle');
 		Route::get('{id}/cancel-confirm','Admin\OrderController@getOrderCancleConfirm');
@@ -117,7 +114,7 @@ Route::group(['prefix'=>'admin'], function(){
 
 
 	//Discount
-	Route::group(['prefix'=>'discount'], function(){
+	Route::group(['prefix'=>'discount', 'middleware'=>'can:disc-manager'], function(){
 
 		Route::get('','Admin\DiscountController@getDiscountList');
 		Route::get('{id}/detail', 'Admin\DiscountController@getDiscountDetail');
@@ -132,7 +129,7 @@ Route::group(['prefix'=>'admin'], function(){
 	});
 
 	//Post
-	Route::group(['prefix'=>'post'], function(){
+	Route::group(['prefix'=>'post', 'middleware'=>'can:post-manager'], function(){
 
 		Route::get('','Admin\PostController@getPostList');
 		Route::get('{id}/detail', 'Admin\PostController@getPostDetail');
@@ -147,7 +144,7 @@ Route::group(['prefix'=>'admin'], function(){
 	});
 
 	//Category
-	Route::group(['prefix'=>'category'], function(){
+	Route::group(['prefix'=>'category', 'middleware'=>'can:adminitrator'], function(){
 
 		Route::get('','Admin\CategoryController@getCategoryList');
 
@@ -167,6 +164,23 @@ Route::group(['prefix'=>'admin'], function(){
 
 Route::get('/', 'PageController@trangchu')->name('trangchu');
 
+//Login and Logout
+Route::get('login', 'PageController@getDangnhap');
+Route::post('login', 'PageController@postDangnhap');
+Route::get('logout', 'PageController@dangxuat');
+
+//Sign in
+Route::get('signin', 'PageController@getDangki');
+Route::post('signin', 'PageController@postDangki');
+
+//Get started
+Route::get('get-started', 'PageController@getGetStarted');
+Route::post('get-started', 'PageController@postGetStarted');
+
+//Goi y cho ban
+Route::get('goi-y-cho-ban', 'PageController@getSuggestionForYou');
+
+//San pham
 Route::get('san-pham', 'PageController@sanpham');
 Route::get('ao', 'PageController@sanphamAo');
 Route::get('quan', 'PageController@sanphamQuan');
@@ -174,20 +188,26 @@ Route::get('vay', 'PageController@sanphamVay');
 Route::get('bo', 'PageController@sanphamBo');
 Route::get('phu-kien', 'PageController@sanphamPhukien');
 
+//San pham chi tiet
 Route::get("sanpham/{id}/{unsigned_name}", 'PageController@sanphamchitiet');
 
-Route::get('vechungtoi', 'PageController@vechungtoi');
+//Ve chung toi
+Route::get('gioi-thieu', 'PageController@gioiThieu');
+Route::get('tuyen-dung', 'PageController@tuyenDung');
+Route::get('cac-cua-hang', 'PageController@cacCuaHang');
+Route::get('lien-he', 'PageController@lienHe');
 
-Route::get('xuhuong', 'PageController@xuhuong');
+//Xu huong
+Route::get('xu-huong', 'PageController@xuhuong');
+Route::get("xu-huong/{id}/{unsigned_title}", 'PageController@xuhuongchitiet');
 
-Route::get('xuhuongchitiet', 'PageController@xuhuongchitiet');
+//Tai khoan, gio hang va thanh toan
+Route::get('gio-hang', 'PageController@giohang');
 
-Route::get('giohang', 'PageController@giohang');
+Route::get("tai-khoan", 'PageController@taikhoan');
 
-Route::get('taikhoan', 'PageController@taikhoan');
+Route::get("tai-khoan/edit", 'PageController@taikhoanedit');
 
-Route::get('taikhoanedit', 'PageController@taikhoanedit');
+Route::get("don-hang", 'PageController@donhang');
 
-Route::get('donhang', 'PageController@donhang');
-
-Route::get('donhangchitiet', 'PageController@donhangchitiet');
+Route::get("don-hang/{order_id}/chi-tiet", 'PageController@donhangchitiet');

@@ -122,11 +122,13 @@ class DiscountController extends Controller
 
             foreach ($product->discounts as $prod_discount)
             {
-               if($request->start_time <=  $prod_discount->finish_time 
-                    || $request->finish_time >= $prod_discount->start_time)
-                {
-                    $product_error = str_pad($product->id, 8, '0', STR_PAD_LEFT);
-                    return redirect("admin/discount/$discount->id/edit")->with('alert-danger',"Sản phẩm mã $product_error đã có khuyến mại trong thời gian này.");
+                if ($prod_discount->id != $id) {
+                    if($request->start_time <=  $prod_discount->finish_time 
+                        || $request->finish_time >= $prod_discount->start_time)
+                    {
+                        $product_error = str_pad($product->id, 8, '0', STR_PAD_LEFT);
+                        return redirect("admin/discount/$discount->id/edit")->with('alert-danger',"Sản phẩm mã $product_error đã có khuyến mại trong thời gian này.");
+                    }
                 }
             }
         }

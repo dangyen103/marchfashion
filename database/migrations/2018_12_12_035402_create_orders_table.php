@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->string('receiver_name');
+            $table->string('receiver_city');
+            $table->string('receiver_district');
             $table->string('receiver_address');
             $table->string('receiver_phone');
             $table->integer('shipping_price');
@@ -26,7 +28,6 @@ class CreateOrdersTable extends Migration
             $table->integer('total');
             $table->timestamps();
 
-            $table->unique('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }

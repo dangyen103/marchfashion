@@ -8,15 +8,11 @@
 									Cửa hàng
 							</div>
 							<ul class="footer-list-group">
-								<li class="footer-list-item">
-									<span><img src="{{ asset('uploads/icons/Map_Icon.png') }}" alt="map-icon"></span> 103 Kim Mã, Cầu Giấy
-								</li>
-								<li class="footer-list-item">
-									<span><img src="{{ asset('uploads/icons/Map_Icon.png') }}" alt="map-icon"></span> 103 Kim Mã, Cầu Giấy
-								</li>
-								<li class="footer-list-item">
-									<span><img src="{{ asset('uploads/icons/Map_Icon.png') }}" alt="map-icon"></span> 103 Kim Mã, Cầu Giấy
-								</li>
+								@foreach ($web_shop_addresses as $item)
+									<li class="footer-list-item">
+										<span><img src="{{ asset("uploads/icons/Map_Icon.png") }}" alt="map-icon"></span> {{ $item }}
+									</li>
+								@endforeach
 							</ul>
 						</div>
 					</div>
@@ -26,14 +22,15 @@
 								Liên hệ
 							</div>
 							<ul class="footer-list-group">
+
+								@foreach ($web_contact_phones as $item)
+									<li class="footer-list-item">
+										<span><img src="{{ asset('uploads/icons/Phone_Icon.png') }}" alt="phone-icon"></span> {{ $item }}
+									</li>
+								@endforeach
+								
 								<li class="footer-list-item">
-									<span><img src="{{ asset('uploads/icons/Phone_Icon.png') }}" alt="phone-icon"></span> (84) 5555 8484
-								</li>
-								<li class="footer-list-item">
-									<span><img src="{{ asset('uploads/icons/Phone_Icon.png') }}" alt="phone-icon"></span> (84) 5555 8484
-								</li>
-								<li class="footer-list-item">
-									<span><img src="{{ asset('uploads/icons/Email_Icon.png') }}" alt="mail-icon"></span> marchfashion@gmail.com
+									<span><img src="{{ asset('uploads/icons/Email_Icon.png') }}" alt="mail-icon"></span> {{ $web_theme->contact_email }}
 								</li>
 							</ul>
 						</div>
