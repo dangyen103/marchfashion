@@ -154,7 +154,7 @@
                     <div class="body-mail">
                         <p style="font-style: italic; margin-bottom: 20px;"><strong>{{ $order->customer->user->name }}</strong> thân mến,</p>
                         <p>Yêu cầu đặt hàng cho đơn hàng <span style="color: #ff7300;">#{{ str_pad($order->id, 8, '0', STR_PAD_LEFT) }}</span> của bạn đã được tiếp nhận và đang chờ nhân viên của chúng tôi xử lý.  
-                            Thời gian đặt hàng là Chủ nhật, 11 tháng mười một, 2018 00:38:14 và được thanh toán khi nhận hàng. 
+                            Thời gian đặt hàng là {{ date('H:i d/m/Y', strtotime($order->created_at)) }} và được thanh toán khi nhận hàng. 
                             Chúng tôi sẽ tiếp tục cập nhật với bạn về trạng thái tiếp theo của đơn hàng.</p>
 
                         <p style="margin-top: 20px;">Cảm ơn bạn đã mua hàng tại March Fashion.</p>

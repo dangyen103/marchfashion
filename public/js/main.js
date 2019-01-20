@@ -169,30 +169,30 @@ function myFunction() {
 // ---------------------------------------------------
 // Add cart alert
 // ---------------------------------------
-$('.add-cart-alert').on('click', function(e){
-    e.preventDefault();
-});
+// $('.add-cart-alert').on('click', function(e){
+//     e.preventDefault();
+// });
 
-$('.add-cart-alert').each(function(){
-    // var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-    var idProduct = $(this).parent().parent().parent().find('.prod-card-id').html();
-    $(this).on('click', function(){
-        swal(idProduct, "đã được thêm vào giỏ !", "success");
-    });
-});
+// $('.add-cart-alert').each(function(){
+//     // var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+//     var idProduct = $(this).parent().parent().parent().find('.prod-card-id').html();
+//     $(this).on('click', function(){
+//         swal(idProduct, "đã được thêm vào giỏ !", "success");
+//     });
+// });
 
 // Product Detail 
-$('.btn-add-to-card').on('click', function(e){
-    e.preventDefault();
-});
+// $('.btn-add-to-card').on('click', function(e){
+//     e.preventDefault();
+// });
 
-$('.btn-add-to-card').each(function(){
-    // var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-    var idProduct = $(this).parent().parent().parent().find('.prod-detail-id').html();
-    $(this).on('click', function(){
-        swal(idProduct, "đã được thêm vào giỏ !", "success");
-    });
-});
+// $('.btn-add-to-card').each(function(){
+//     // var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+//     var idProduct = $(this).parent().parent().parent().find('.prod-detail-id').html();
+//     $(this).on('click', function(){
+//         swal(idProduct, "đã được thêm vào giỏ !", "success");
+//     });
+// });
 
 // ---------------------------------------------------
 
@@ -324,13 +324,110 @@ var prodCart = new Vue({
     el: '#prodCart',
     data: {
         isShowCartCheckout: false,
-        isShowBuyBtn: true
+        isShowBuyBtn: true,
+        order: {
+            sub_total: '',
+            shipping_price: 0,
+            total: 0,
+        },
+        receiver_city: 'Hà Nội',
     },
     methods: {
         showCartCheckout: function(){
             this.isShowCartCheckout = true;
             this.isShowBuyBtn = false;
+        },
+
+        hiddenCartCheckout: function(){
+            this.isShowCartCheckout = false;
+            this.isShowBuyBtn = true;
+        },
+
+        convertNumber: function($num){
+            const formatter = new Intl.NumberFormat('de-DE', {
+                style: 'currency',
+                currency: 'VND',
+                minimumFractionDigits: 0
+            });
+            return formatter.format($num);
+        },
+
+        shipingPriceConvert: function(){
+            if(this.receiver_city == 'Hà Nội' || this.subTotal() >= 500000){
+                return this.convertNumber(0);
+            }
+            else {
+                this.order.shipingrice == 35000;
+                return this.convertNumber(35000);
+            }
+        },
+
+        shipingPrice: function(){
+            if(this.receiver_city == 'Hà Nội' || this.subTotal() >= 500000){
+                return 0;
+            }
+            else {
+                return 35000;
+            }
+        },
+
+        subTotal: function(){
+            var str = this.$refs.cartSubTotal.innerText;
+            var sub_total_str = str.slice(0, str.length - 2);
+            var sub_total_edit = sub_total_str.replace('.','');
+            var sub_total = Number(sub_total_edit);
+            return sub_total;
         }
+
     }
 });
 // -----------------------------------------------------
+
+
+
+
+// --------------------------------------------
+$(document).ready(function(){
+
+    $('#city').change(function(){
+        if($(this).val() != '')
+        {
+            var city_id = $(this).val();
+            // var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '/marchfashion/public/showDistrictsInCity?city_id',
+                method:"GET",
+                data:{
+                    city_id: city_id
+                    },
+                success:function(data)
+                {
+                    $("#district").html('');
+                    $.each(data, function(key, value){
+                        $("#district").append(
+                            '<option value="' + value.name + '">' + value.name + "</option>"
+                        );
+                    });
+                }
+            })
+        }
+    });
+   
+    // $('#city').change(function(){
+    //  $('#district').val('');
+    // });
+ 
+});
+
+
+// ---------------------------------------------
+$(document).ready(function(e){
+    		
+    $('.question-row .img-check').click(function(e) {
+    $('.question-row .img-check').not(this).removeClass('check')
+        .siblings('input').prop('checked',false);
+    $(this).addClass('check')
+        .siblings('input').prop('checked',true);
+    });
+    
+});

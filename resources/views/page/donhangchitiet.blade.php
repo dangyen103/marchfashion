@@ -31,22 +31,35 @@
                                     <div class="order-info-block">
                                         <div class="order-info-block-l">
                                             <div class="order-info-block-name">
-                                                Đơn hàng <a href="#">#123244121</a>
+                                                Đơn hàng <a>#{{ str_pad($order->id, 8, '0', STR_PAD_LEFT) }}</a>
                                             </div>
                                             <div class="order-info-block-time">
-                                                Đặt ngày 27-10-2018 11:02
+                                                Đặt ngày {{ date('d-m-Y H:i', strtotime($order->created_at)) }}
                                             </div>
                                         </div>
                                         <div class="order-info-block-r">
                                             <span class="pr-2">Tổng cộng:</span>
-                                            <strong class="cl-red txt-total">560000₫</strong>
+                                            <strong class="cl-red txt-total">{{ number_format($order->total, 0, ',', '.') }} ₫</strong>
                                         </div>
                                     </div>
 
                                     <!-- Order Status Progress -->
                                     <div class="order-status-progress my-5">
+                                        @if ($order->cancel_status == 1)
+                                            <div class="order-cancel cl-red">
+                                                Đã bị hủy
+                                            </div>
+                                        @endif
                                         <div class="progress">
-                                            <div class="progress-bar" style="width: 66.6666667%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            @if ($order->status == 0)
+                                                <div class="progress-bar" style="width: 0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            @elseif($order->status == 1)
+                                                <div class="progress-bar" style="width: 33.3333333%" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            @elseif($order->status == 2)
+                                                <div class="progress-bar" style="width: 66.6666667%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            @else
+                                                <div class="progress-bar" style="width: 100%" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                            @endif
                                         </div>
                                         <div class="row mx-0">
                                             <div class="col-3">
@@ -78,66 +91,28 @@
                                     <!-- End Order Status Progress -->
 
                                     <div class="order-items-block">
-                                        <div class="row order-item-block">
-                                            <div class="col-sm-7 col-md-6 col-lg-5 order-item-prod">
-                                                <img class="order-item-img" src="{{ asset("uploads/products/3hCxQ-A09.jpg") }}" alt="hình ảnh">
-                                                <div class="order-item-name">
-                                                    Váy nơ tay lửng cổ tròn thiết kế mới 2018
-                                                    <div class="order-item-price-xs">
-                                                        <span>180000₫</span>
-                                                    </div>
-                                                    <div class="order-item-num-xs">
-                                                        <span>x</span> 1
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 order-item-price">
-                                                    <span>180000₫</span>
-                                                </div>
-                                            <div class="col-sm-2 col-md-3 col-lg-4 order-item-num">
-                                                <span>x</span> 1
-                                            </div>
-                                        </div>
-                                        <div class="row order-item-block">
-                                            <div class="col-sm-7 col-md-6 col-lg-5 order-item-prod">
-                                                <img class="order-item-img" src="{{ asset("uploads/products/3hCxQ-A09.jpg") }}" alt="hình ảnh">
-                                                <div class="order-item-name">
-                                                    Váy nơ tay lửng cổ tròn thiết kế mới 2018
-                                                    <div class="order-item-price-xs">
-                                                        <span>180000₫</span>
-                                                    </div>
-                                                    <div class="order-item-num-xs">
-                                                        <span>x</span> 1
+                                        @foreach ($order->product_details as $item)
+                                            <div class="row order-item-block">
+                                                <div class="col-sm-5 order-item-prod">
+                                                    <img class="order-item-img" src="{{ asset("uploads/products/".$item->product->thumbnail) }}" alt="hình ảnh">
+                                                    <div class="order-item-name">
+                                                        {{ $item->product->name }}
+                                                        <div class="order-item-price-xs">
+                                                            <span class="cl-red">{{ number_format($item->product->price*(100 - $item->pivot->order_discount)/100, 0, ',', '.') }} ₫</span>
+                                                        </div>
+                                                        <div class="order-item-num-xs">
+                                                            <span>x</span> {{ $item->pivot->order_quantity }}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-3 order-item-price">
-                                                    <span>180000₫</span>
+                                                <div class="col-sm-3 order-item-price">
+                                                    <span class="cl-red">{{ number_format($item->product->price*(100 - $item->pivot->order_discount)/100, 0, ',', '.') }} ₫</span>
                                                 </div>
-                                            <div class="col-sm-2 col-md-3 col-lg-4 order-item-num">
-                                                <span>x</span> 1
-                                            </div>
-                                        </div>
-                                        <div class="row order-item-block">
-                                            <div class="col-sm-7 col-md-6 col-lg-5 order-item-prod">
-                                                <img class="order-item-img" src="{{ asset("uploads/products/3hCxQ-A09.jpg") }}" alt="hình ảnh">
-                                                <div class="order-item-name">
-                                                    Váy nơ tay lửng cổ tròn thiết kế mới 2018
-                                                    <div class="order-item-price-xs">
-                                                        <span>180000₫</span>
-                                                    </div>
-                                                    <div class="order-item-num-xs">
-                                                        <span>x</span> 1
-                                                    </div>
+                                                <div class="col-sm-4 order-item-num">
+                                                    <span>x</span> {{ $item->pivot->order_quantity }}
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3 order-item-price">
-                                                    <span>180000₫</span>
-                                                </div>
-                                            <div class="col-sm-2 col-md-3 col-lg-4 order-item-num">
-                                                <span>x</span> 1
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -152,13 +127,13 @@
                                         </div>
                                         <div class="order-detail-block-list">
                                             <div class="order-detail-block-item">
-                                                Đặng Thị Yến
+                                                {{ $order->receiver_name }}
                                             </div>
                                             <div class="order-detail-block-item">
-                                                Xóm 2 Bắc, chợ Kim Nỗ, xã Kim Nỗ, huyện Đông Anh, Hà Nội
+                                                {{ $order->receiver_address.', '.$order->receiver_district.', '.$order->receiver_city }}
                                             </div>
                                             <div class="order-detail-block-item">
-                                                0985690342
+                                                {{ $order->receiver_phone }}
                                             </div>
                                         </div>
                                     </div>
@@ -171,15 +146,15 @@
                                         <div class="order-detail-block-total">
                                             <div class="block-total-item">
                                                 <div class="block-total-label">Tạm tính</div>
-                                                <div class="block-total-value">540000₫</div>
+                                                <div class="block-total-value">{{ number_format($order->total - $order->shipping_price, 0, ',', '.') }} ₫</div>
                                             </div>
                                             <div class="block-total-item">
                                                 <div class="block-total-label">Phí vận chuyện</div>
-                                                <div class="block-total-value">20000₫</div>
+                                                <div class="block-total-value">{{ number_format($order->shipping_price, 0, ',', '.') }} ₫</div>
                                             </div>
                                             <div class="block-total-item">
                                                 <div class="block-total-label">Tổng</div>
-                                                <div class="block-total-value">560000₫</div>
+                                                <div class="block-total-value">{{ number_format($order->total, 0, ',', '.') }} ₫</div>
                                             </div>
                                         </div>
                                     </div>

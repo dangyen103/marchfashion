@@ -4,7 +4,7 @@
 			<div class="container-fluid mx-lg-5">
 				<a class="navbar-brand" href="{{ route('trangchu') }}"><img src="{{ asset('uploads/icons/Logo.png') }}"></a>
 				<div class="header-left-group-mobile">
-					<a class="nav-link cart-noti-mobile" title="Giỏ hàng" data-count="4" href="{{ asset("gio-hang") }}">
+					<a class="nav-link cart-noti-mobile" title="Giỏ hàng" data-count="{{ Cart::count() }}" href="{{ asset("gio-hang") }}">
 						<img class="" src="{{ asset('uploads/icons/cart-icon.png') }}"  alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
 					</form>
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link cart-noti" title="Giỏ hàng" data-count="4" href="{{ asset("gio-hang") }}">
+							<a class="nav-link cart-noti" title="Giỏ hàng" data-count="{{ Cart::count() }}" href="{{ asset("gio-hang") }}">
 								<img class="" src="{{ asset('uploads/icons/cart-icon.png') }}" alt="">
 							</a>
 						</li>
@@ -87,7 +87,7 @@
 							<div class="dropdown-menu setting-dropdown" aria-labelledby="navbarDropdown">
 								@if (Auth::guest())
 									<a class="dropdown-item" href="{{ asset('login') }}">Đăng nhập</a>
-									<a class="dropdown-item" href="{{ asset('logout') }}">Đăng kí</a>
+									<a class="dropdown-item" href="{{ asset('signin') }}">Đăng kí</a>
 								@else
 									<a class="dropdown-item" href="{{ asset("tai-khoan") }}">Thông tin tài khoản</a>
 									<a class="dropdown-item" href="{{ asset("don-hang") }}">Đơn hàng của tôi</a>

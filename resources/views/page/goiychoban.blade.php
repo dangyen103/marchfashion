@@ -22,7 +22,7 @@
 			<div class="row">
 				@foreach ($products as $item)
                     <div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
-                        <div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}">
+                        <div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}">
                             <div class="prod-card-img">
                                 <img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
                             </div>

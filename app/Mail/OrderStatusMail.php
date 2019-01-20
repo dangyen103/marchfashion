@@ -30,6 +30,13 @@ class OrderStatusMail extends Mailable
     {
         $order_id = str_pad($this->order->id, 8, '0', STR_PAD_LEFT);
         if ($this->order->cancel_status == 0) {
+            if ($this->order->status == 0) {
+                return $this->subject("March Fashion đã nhận đơn hàng #$order_id")
+                ->from('contact.marchfashion@gmail.com', 'March Fashion')
+                ->view('mails.checkout-completed')->with([
+                    'order' => $this->order
+                ]);
+            }
             if ($this->order->status == 1) {
                 return $this->subject("Xác nhận đơn hàng #$order_id")
                 ->from('contact.marchfashion@gmail.com', 'March Fashion')

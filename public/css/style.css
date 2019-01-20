@@ -170,6 +170,14 @@ button:focus,
 .tab-content > .active{
   display: flex;
 }
+
+.form-check-inline{
+  height: 100%;
+}
+
+.form-control{
+  font-size: .9rem;
+}
 /*---------------------------------------------------*/
 
 
@@ -295,7 +303,13 @@ textarea.focus,
 textarea.active.focus,
 textarea.active:focus,
 textarea:active.focus,
-textarea:active:focus{
+textarea:active:focus,
+select:focus,
+select.focus,
+select.active.focus,
+select.active:focus,
+select:active.focus,
+select:active:focus{
   outline: 0 !important;
   outline-color: transparent !important;
   outline-width: 0 !important;
@@ -616,6 +630,7 @@ input, textarea, button{
   border-radius: 0 !important;
   border: none !important;
   width: 100% !important;
+  display: none;
 }
 
 .card-add-to-cart button:hover{
@@ -832,7 +847,7 @@ input, textarea, button{
 .nav-sublist-group > li:first-child{
   font-size: .9rem;
   padding-top: 1rem;
-  padding-bottom: 0;
+  padding-bottom: .5rem;
   padding-left: 1rem;
 }
 
@@ -1268,10 +1283,55 @@ input, textarea, button{
   font-family: 'Montserrat-SemiBold', sans-serif;
 }
 
+.cart-prod-name a{
+  color: #000;
+}
+
+.cart-prod-name a:hover{
+  text-decoration: underline;
+}
+
 .cart-prod-name .sub-info{
   font-family: 'Montserrat-Regular', sans-serif;
   font-size: .8rem;
   color: #666;
+}
+
+.cart-price-group-mobile{
+  display: none;
+}
+
+.cart-price-group-mobile span{
+  margin-right: .5rem;
+}
+
+.cart-price-group .discount-price-item,
+.cart-price-group-mobile .discount-price-item{
+  color: #ff0000;
+}
+
+.cart-price-group .price-item,
+.cart-price-group .discount-value-item,
+.cart-price-group-mobile .price-item,
+.cart-price-group-mobile .discount-value-item{
+  font-size: .8rem;
+  color: #666;
+}
+.cart-price-group .price-item,
+.cart-price-group-mobile .price-item{
+  text-decoration: line-through;
+}
+
+@media(max-width: 768px){
+  .cart-price-group{
+    display: none;
+  }
+  .cart-price-group-mobile{
+    display: flex;
+  }
+  .cart-prod-name .sub-info{
+    color: #ccc;
+  }
 }
 
 .table thead th {
@@ -1653,6 +1713,14 @@ input, textarea, button{
   position: relative;
 }
 
+.order-status-progress .order-cancel{
+  position: absolute;
+  font-size: .9rem;
+  font-family: 'Montserrat-SemiBold', sans-serif;
+  top: -75%;
+  left: 46%;
+}
+
 .progress{
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -1688,11 +1756,20 @@ input, textarea, button{
   .order-status-node-dot{
     top: -30%;
   }
+
+  .order-status-progress .order-cancel{
+    top: -55%;
+    left: 43%;
+  }
 }
 
 @media (max-width: 445px){
   .order-status-node-dot{
-    top: -22%
+    top: -22%;
+  }
+  .order-status-progress .order-cancel{
+    top: -40%;
+    left: 40%;
   }
 }
 
@@ -1860,6 +1937,23 @@ input, textarea, button{
 .question-content{
   font-family: 'Montserrat-SemiBold', sans-serif;
 }
+
+.question-row .check{
+  opacity:0.5;
+	color:#666;
+}
+
+.question-row .box{
+  margin-bottom: 5px;
+}
+
+.question-row .btn{
+  padding: 0;
+}
+
+.question-row .hidden{
+  display: none;
+}
 /* ----------------------------------- */
 
 
@@ -1874,6 +1968,11 @@ input, textarea, button{
   font-size: .9rem;
   margin-top: 3rem !important;
   margin-bottom: 5rem !important;
+}
+
+.signin-form{
+  margin-bottom: 2.5rem !important;
+  margin-top: 1rem !important;
 }
 
 .login-form h3{

@@ -30,9 +30,20 @@
 							<span>›</span>
 							<a href="{{ asset('san-pham') }}">Sản phẩm</a>
 						</li>
-						<li>
-							<span>›</span>{{ $type }}
-						</li>
+						
+						@if (isset($sub_type))
+							<li>
+								<span>›</span>
+								<a href="{{ asset("$unsigned_type") }}">{{ $type }}</a>
+							</li>
+							<li>
+								<span>›</span>{{ $sub_type }}
+							</li>
+						@else
+							<li>
+								<span>›</span>{{ $type }}
+							</li>
+						@endif
 					@else
 					<li>
 							<span>›</span>Sản phẩm
@@ -64,7 +75,7 @@
 								<ul class="nav-sublist-group" :style="{display: isPantsNone}">
 									@foreach ($categories as $item)
 										@if($item->type == 1)
-											<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+											<li><a href="{{ asset("quan/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 										@endif
 									@endforeach
 								</ul>
@@ -75,7 +86,7 @@
 								<ul class="nav-sublist-group" :style="{display: isDressNone}">
 									@foreach ($categories as $item)
 										@if($item->type == 2)
-											<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+											<li><a href="{{ asset("vay/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 										@endif
 									@endforeach
 								</ul>
@@ -86,7 +97,7 @@
 								<ul class="nav-sublist-group" :style="{display: isSetNone}">
 									@foreach ($categories as $item)
 										@if($item->type == 3)
-											<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+											<li><a href="{{ asset("bo/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 										@endif
 									@endforeach
 								</ul>
@@ -97,7 +108,7 @@
 								<ul class="nav-sublist-group" :style="{display: isAccessNone}">
 									@foreach ($categories as $item)
 										@if($item->type == 4)
-											<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+											<li><a href="{{ asset("phu-kien/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 										@endif
 									@endforeach
 								</ul>
@@ -122,7 +133,7 @@
 									<ul class="nav-sublist-group" :style="{display: isPantsNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 1)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("quan/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -133,7 +144,7 @@
 									<ul class="nav-sublist-group" :style="{display: isDressNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 2)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("vay/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -144,7 +155,7 @@
 									<ul class="nav-sublist-group" :style="{display: isSetNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 3)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("bo/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -155,7 +166,7 @@
 									<ul class="nav-sublist-group" :style="{display: isAccessNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 4)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("phu-kien/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -179,7 +190,7 @@
 									<ul class="nav-sublist-group" :style="{display: isPantsNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 1)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("quan/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -190,7 +201,7 @@
 									<ul class="nav-sublist-group" :style="{display: isDressNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 2)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("vay/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -201,7 +212,7 @@
 									<ul class="nav-sublist-group" :style="{display: isSetNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 3)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("bo/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -212,7 +223,7 @@
 									<ul class="nav-sublist-group" :style="{display: isAccessNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 4)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("phu-kien/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -236,7 +247,7 @@
 									<ul class="nav-sublist-group" :style="{display: isPantsNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 1)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("quan/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -247,7 +258,7 @@
 									<ul class="nav-sublist-group" :style="{display: isDressNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 2)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("vay/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -258,7 +269,7 @@
 									<ul class="nav-sublist-group" :style="{display: isSetNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 3)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("bo/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -269,7 +280,7 @@
 									<ul class="nav-sublist-group" :style="{display: isAccessNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 4)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("phu-kien/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -293,7 +304,7 @@
 									<ul class="nav-sublist-group" :style="{display: isPantsNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 1)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("quan/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -304,7 +315,7 @@
 									<ul class="nav-sublist-group" :style="{display: isDressNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 2)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("vay/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -315,7 +326,7 @@
 									<ul class="nav-sublist-group" :style="{display: isSetNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 3)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("bo/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -326,7 +337,7 @@
 									<ul class="nav-sublist-group" :style="{display: isAccessNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 4)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("phu-kien/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -350,7 +361,7 @@
 									<ul class="nav-sublist-group" :style="{display: isPantsNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 1)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("quan/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -361,7 +372,7 @@
 									<ul class="nav-sublist-group" :style="{display: isDressNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 2)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("vay/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -372,7 +383,7 @@
 									<ul class="nav-sublist-group" :style="{display: isSetNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 3)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("bo/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
@@ -383,16 +394,14 @@
 									<ul class="nav-sublist-group" :style="{display: isAccessNone}">
 										@foreach ($categories as $item)
 											@if($item->type == 4)
-												<li><a href="{{ asset("ao/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
+												<li><a href="{{ asset("phu-kien/$item->id/$item->unsigned_name") }}">{{ $item->name }}</a></li>
 											@endif
 										@endforeach
 									</ul>
 								</li>
 							@endif
 						@endif
-
-						
-						
+		
 					</ul>
 				</div>
 				<div class="col-md-12 col-lg-8-5">
@@ -420,9 +429,10 @@
 					</div>				
 					<div class="tab-content">
 						<div class="row tab-pane active" id="prodAll">
-							@foreach ($products as $item)
+							@if (count($products) > 0)
+								@foreach ($products as $item)
 								<div class="col-6 col-sm-4 col-md-3 col-lg-3 mb-30">
-									<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+									<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 										<div class="prod-card-img">
 											<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 										</div>
@@ -430,13 +440,13 @@
 											<div class="prod-card-id">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</div>
 											<div class="prod-card-price">{{ number_format($item->price, 0, ',', '.') }} ₫</div>
 										</div>
-	
+
 										@if ( strftime("%Y-%m-%d", strtotime(date("Y-m-d") . " -2 week")) <= date('Y-m-d', strtotime($item->created_at)))
 											<div class="tag-new">
 												<img src="{{ asset("uploads/icons/New_Icon.png") }}" alt="icon">
 											</div>	
 										@endif
-	
+
 										@foreach ($item->discounts as $item_discount)
 											@if (date('Y-m-d H:i:s', strtotime($item_discount->start_time)) <= date('Y-m-d H:i:s') 
 												&& date('Y-m-d H:i:s') <= date('Y-m-d H:i:s', strtotime($item_discount->finish_time)))
@@ -445,23 +455,26 @@
 												</div>
 											@endif
 										@endforeach
-	
+
 										<div class="card-add-to-cart">
 											<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
 										</div>
 									</a></div>
 								</div>
 							@endforeach	
-	
+
 							<div class="col-12 pagination-group">
 								{{ $products->links() }}
 							</div>
+							@else
+								<div class="col-12 text-center">Không có sản phẩm nào.</div>
+							@endif
 						</div>
 						<div class="row tab-pane fade" id="prodNew">
 							@if (count($new_products) > 0)
 								@foreach ($new_products as $item)
 									<div class="col-6 col-sm-4 col-md-3 col-lg-3 mb-30">
-										<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+										<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 											<div class="prod-card-img">
 												<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 											</div>
@@ -496,13 +509,14 @@
 									{{ $new_products->links() }}
 								</div>	
 							@else
-								<div class="col-12 text-center">Không có sản phẩm mới nào.</div>
+								<div class="col-12 text-center">Không có sản phẩm nào.</div>
 							@endif
 						</div>
 						<div class="row tab-pane fade" id="prodFeature">
-							@foreach ($feature_products as $item)
+							@if (count($feature_products) > 0)
+								@foreach ($feature_products as $item)
 								<div class="col-6 col-sm-4 col-md-3 col-lg-3 mb-30">
-									<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+									<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 										<div class="prod-card-img">
 											<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 										</div>
@@ -510,13 +524,13 @@
 											<div class="prod-card-id">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</div>
 											<div class="prod-card-price">{{ number_format($item->price, 0, ',', '.') }} ₫</div>
 										</div>
-	
+
 										@if ( strftime("%Y-%m-%d", strtotime(date("Y-m-d") . " -2 week")) <= date('Y-m-d', strtotime($item->created_at)))
 											<div class="tag-new">
 												<img src="{{ asset("uploads/icons/New_Icon.png") }}" alt="icon">
 											</div>	
 										@endif
-	
+
 										@foreach ($item->discounts as $item_discount)
 											@if (date('Y-m-d H:i:s', strtotime($item_discount->start_time)) <= date('Y-m-d H:i:s') 
 												&& date('Y-m-d H:i:s') <= date('Y-m-d H:i:s', strtotime($item_discount->finish_time)))
@@ -525,22 +539,26 @@
 												</div>
 											@endif
 										@endforeach
-	
+
 										<div class="card-add-to-cart">
 											<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
 										</div>
 									</a></div>
 								</div>
 							@endforeach	
-	
+
 							<div class="col-12 pagination-group">
 								{{ $feature_products->links() }}
 							</div>
+							@else
+								<div class="col-12 text-center">Không có sản phẩm nào.</div>
+							@endif
 						</div>
 						<div class="row tab-pane fade" id="prodPriceAsc">
-							@foreach ($price_asc_products as $item)
+							@if (count($price_asc_products) > 0)
+								@foreach ($price_asc_products as $item)
 								<div class="col-6 col-sm-4 col-md-3 col-lg-3 mb-30">
-									<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+									<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 										<div class="prod-card-img">
 											<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 										</div>
@@ -548,13 +566,13 @@
 											<div class="prod-card-id">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</div>
 											<div class="prod-card-price">{{ number_format($item->price, 0, ',', '.') }} ₫</div>
 										</div>
-	
+
 										@if ( strftime("%Y-%m-%d", strtotime(date("Y-m-d") . " -2 week")) <= date('Y-m-d', strtotime($item->created_at)))
 											<div class="tag-new">
 												<img src="{{ asset("uploads/icons/New_Icon.png") }}" alt="icon">
 											</div>	
 										@endif
-	
+
 										@foreach ($item->discounts as $item_discount)
 											@if (date('Y-m-d H:i:s', strtotime($item_discount->start_time)) <= date('Y-m-d H:i:s') 
 												&& date('Y-m-d H:i:s') <= date('Y-m-d H:i:s', strtotime($item_discount->finish_time)))
@@ -563,22 +581,26 @@
 												</div>
 											@endif
 										@endforeach
-	
+
 										<div class="card-add-to-cart">
 											<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
 										</div>
 									</a></div>
 								</div>
 							@endforeach	
-	
+
 							<div class="col-12 pagination-group">
 								{{ $price_asc_products->links() }}
 							</div>
+							@else
+								<div class="col-12 text-center">Không có sản phẩm nào.</div>
+							@endif
 						</div>
 						<div class="row tab-pane fade" id="prodPriceDesc">
-							@foreach ($price_desc_products as $item)
+							@if (count($price_desc_products) > 0)
+								@foreach ($price_desc_products as $item)
 								<div class="col-6 col-sm-4 col-md-3 col-lg-3 mb-30">
-									<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+									<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 										<div class="prod-card-img">
 											<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 										</div>
@@ -586,13 +608,13 @@
 											<div class="prod-card-id">{{ str_pad($item->id, 8, '0', STR_PAD_LEFT) }}</div>
 											<div class="prod-card-price">{{ number_format($item->price, 0, ',', '.') }} ₫</div>
 										</div>
-	
+
 										@if ( strftime("%Y-%m-%d", strtotime(date("Y-m-d") . " -2 week")) <= date('Y-m-d', strtotime($item->created_at)))
 											<div class="tag-new">
 												<img src="{{ asset("uploads/icons/New_Icon.png") }}" alt="icon">
 											</div>	
 										@endif
-	
+
 										@foreach ($item->discounts as $item_discount)
 											@if (date('Y-m-d H:i:s', strtotime($item_discount->start_time)) <= date('Y-m-d H:i:s') 
 												&& date('Y-m-d H:i:s') <= date('Y-m-d H:i:s', strtotime($item_discount->finish_time)))
@@ -601,17 +623,20 @@
 												</div>
 											@endif
 										@endforeach
-	
+
 										<div class="card-add-to-cart">
 											<button class="btn btn-info add-cart-alert">Thêm vào giỏ <i class="fas fa-cart-arrow-down"></i></button>
 										</div>
 									</a></div>
 								</div>
 							@endforeach	
-	
+
 							<div class="col-12 pagination-group">
 								{{ $price_desc_products->links() }}
 							</div>
+							@else
+								<div class="col-12 text-center">Không có sản phẩm nào.</div>
+							@endif
 						</div>
 					</div>
 				</div>

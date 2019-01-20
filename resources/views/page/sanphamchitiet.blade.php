@@ -45,22 +45,24 @@
 						<li class="prod-price">Giá:
 							@php
 								$check = 0;
+								$product_discount;
 								foreach ($product->discounts as $prod_discount) {
 									if (date('Y-m-d H:i:s', strtotime($prod_discount->start_time)) <= date('Y-m-d H:i:s')
 									&& date('Y-m-d H:i:s') <= date('Y-m-d H:i:s', strtotime($prod_discount->finish_time))){
-										$check = 1; 
+										$check = 1;
+										$product_discount = $prod_discount; 
 										break;
 									}
 								}
 								if ($check == 0) {
 									echo '<span>'.number_format($product->price, 0, ',', '.').' ₫</span>';
 								} else {
-									echo '<span>'.number_format($product->price*(100 - $prod_discount->discountValue)/100, 0, ',', '.').' đ</span>';
+									echo '<span>'.number_format($product->price*(100 - $product_discount->discountValue)/100, 0, ',', '.').' đ</span>';
 									echo '<span>'.number_format($product->price, 0, ',', '.').' ₫</span>';
-									echo '<span>-'.$prod_discount->discountValue.' %</span>';
+									echo '<span>-'.$product_discount->discountValue.' %</span>';
 								}
 							@endphp
-							
+
 							{{-- @foreach ($product->discounts as $prod_discount)
 								@if (date('Y-m-d H:i:s', strtotime($prod_discount->start_time)) <= date('Y-m-d H:i:s') 
 									&& date('Y-m-d H:i:s') <= date('Y-m-d H:i:s', strtotime($prod_discount->finish_time)))
@@ -93,7 +95,9 @@
 						</li>
 					</ul>
 
-					<form action="" class="prod-form">
+					<form action="{{ asset("san-pham/$product->id/$product->unsigned_name/them-vao-gio") }}" 
+						method="GET"
+						class="prod-form">
 							<div class="form-row mx-0 mb-1">
 								<div class="form-group mr-4 mr-lg-5">
 									<label for="inputColor">Màu sắc:</label>
@@ -132,15 +136,15 @@
 									<button class="btn-num-product-down">
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
-									<input class="num-product" type="number" name="num-product" value="1">
+									<input class="num-product" type="number" name="quantity" value="1">
 									<button class="btn-num-product-up">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
 									</button>
 								</div>
 							</div>
 
-							<button class="btn btn-add-to-card mr-2">Thêm vào giỏ</i></button>
-							<button type="submit" class="btn btn-buy-now">Mua ngay</i></button>
+							<button type="submit" class="btn btn-add-to-card mr-2">Thêm vào giỏ</i></button>
+							<a href="#" class="btn btn-buy-now">Mua ngay</i></a>
 					</form>
 
 					<div class="prod-detail-desct">
@@ -165,7 +169,7 @@
 						@foreach ($set_item->products as $item)
 							@if ($item->id != $product->id)
 								<div class="col-6 col-sm-4 col-md-3 col-lg-2-5 mb-30">
-									<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+									<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 										<div class="prod-card-img">
 											<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 										</div>

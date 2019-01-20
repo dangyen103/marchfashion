@@ -40,7 +40,7 @@
 					<div class="row slick-carousel1">
 						@foreach ($new_products as $item)
 							<div class="col-6 col-sm-4 col-md-3 col-lg-2-5">
-								<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+								<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 									<div class="prod-card-img">
 										<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 									</div>
@@ -85,7 +85,7 @@
 				<div class="row slick-carousel2">
 					@foreach ($feature_products as $item)
 						<div class="col-6 col-sm-4 col-md-3 col-lg-2-5">
-							<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+							<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 								<div class="prod-card-img">
 									<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 								</div>
@@ -131,7 +131,7 @@
 					<div class="row slick-carousel3">
 						@foreach ($suggested_products as $item)
 							<div class="col-6 col-sm-4 col-md-3 col-lg-2-5">
-								<div class="prod-card"><a href="{{ asset("sanpham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
+								<div class="prod-card"><a href="{{ asset("san-pham/$item->id/$item->unsigned_name") }}" title="{{$item->name}}">
 									<div class="prod-card-img">
 										<img class="img-fluid" src="{{ asset("uploads/products/$item->thumbnail") }}" width="100%" alt="hình ảnh">
 									</div>

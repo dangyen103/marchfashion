@@ -176,6 +176,7 @@ Route::post('signin', 'PageController@postDangki');
 //Get started
 Route::get('get-started', 'PageController@getGetStarted');
 Route::post('get-started', 'PageController@postGetStarted');
+Route::post('get-started/choose-fashion-style', 'PageController@postChooseFashionStyle');
 
 //Goi y cho ban
 Route::get('goi-y-cho-ban', 'PageController@getSuggestionForYou');
@@ -188,8 +189,15 @@ Route::get('vay', 'PageController@sanphamVay');
 Route::get('bo', 'PageController@sanphamBo');
 Route::get('phu-kien', 'PageController@sanphamPhukien');
 
+//San pham theo loai con
+Route::get("ao/{id}/{unsigned_name}", 'PageController@sanphamLoai');
+Route::get("quan/{id}/{unsigned_name}", 'PageController@sanphamLoai');
+Route::get("vay/{id}/{unsigned_name}", 'PageController@sanphamLoai');
+Route::get("bo/{id}/{unsigned_name}", 'PageController@sanphamLoai');
+Route::get("phu-kien/{id}/{unsigned_name}", 'PageController@sanphamLoai');
+
 //San pham chi tiet
-Route::get("sanpham/{id}/{unsigned_name}", 'PageController@sanphamchitiet');
+Route::get("san-pham/{id}/{unsigned_name}", 'PageController@sanphamchitiet');
 
 //Ve chung toi
 Route::get('gioi-thieu', 'PageController@gioiThieu');
@@ -202,12 +210,19 @@ Route::get('xu-huong', 'PageController@xuhuong');
 Route::get("xu-huong/{id}/{unsigned_title}", 'PageController@xuhuongchitiet');
 
 //Tai khoan, gio hang va thanh toan
-Route::get('gio-hang', 'PageController@giohang');
+Route::get('gio-hang', 'PageController@giohang')->middleware('customerlogin');
+Route::get("san-pham/{id}/{unsigned_name}/them-vao-gio", 'CartController@themVaoGio')->middleware('customerlogin');
+Route::get('dat-hang', 'CartController@datHang')->middleware('customerlogin');
+Route::get("gio-hang/{rowId}/xoa", 'CartController@xoaGioHang')->middleware('customerlogin');
 
-Route::get("tai-khoan", 'PageController@taikhoan');
 
-Route::get("tai-khoan/edit", 'PageController@taikhoanedit');
+Route::get("tai-khoan", 'PageController@taikhoan')->middleware('customerlogin');
 
-Route::get("don-hang", 'PageController@donhang');
+Route::get("tai-khoan/chinh-sua", 'PageController@getTaiKhoanEdit')->middleware('customerlogin');
+Route::post("tai-khoan/chinh-sua", 'PageController@postTaiKhoanEdit')->middleware('customerlogin');
 
-Route::get("don-hang/{order_id}/chi-tiet", 'PageController@donhangchitiet');
+Route::get("don-hang", 'PageController@donhang')->middleware('customerlogin');
+
+Route::get("don-hang/{order_id}/chi-tiet", 'PageController@donhangchitiet')->middleware('customerlogin');
+
+Route::get('showDistrictsInCity', 'DistrictController@showDistrictsInCity');

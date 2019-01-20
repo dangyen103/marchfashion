@@ -5,7 +5,7 @@
     <div class="container-fluid get-started-group">
         <div class="get-started-form">
             <form action="{{ asset('get-started') }}"
-                    method="GET">
+                    method="POST">
 
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
@@ -242,7 +242,7 @@
                     </div>
                 </div>
                 <div class="txt-center mt-3">
-                    <a href="#" class="btn btn-light mr-3">Hủy</a>
+                    <a href="{{ asset('') }}" class="btn btn-light mr-3">Hủy</a>
                     <button type="submit" class="btn btn-dark">Gửi</button>
                 </div>
             </form>

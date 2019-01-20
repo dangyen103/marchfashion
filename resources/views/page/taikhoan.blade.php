@@ -7,7 +7,7 @@
 				<ul class="breadcrumb bg-tranf">
 					<li><a href="{{ route('trangchu') }}">Trang chủ</a></li>
 					<li>
-						<span>›</span>Đơn hàng của tôi
+						<span>›</span>Thông tin tài khoản
 					</li>
 				</ul>
 			</div>
@@ -29,7 +29,7 @@
                         </div>
                         
                         <div class="col-12">
-                            <div class="row account-info mx-0 px-2">
+                            <div class="row account-info mx-0 pb-0 px-2">
                                 <div class="col-sm-4 account-item mb-30">
                                     <div class="account-item-label">
                                         Họ tên
@@ -74,8 +74,35 @@
                                         @endif
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row account-info mx-0 pt-0 px-2">
+                                <div class="col-sm-4 account-item mb-30">
+                                    <div class="account-item-label">
+                                        Tỉnh/Thành phố
+                                    </div>
+                                    <div class="account-item-value">
+                                        {{ Auth::user()->customer->city }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 account-item mb-30">
+                                    <div class="account-item-label">
+                                        Quận/Huyện
+                                    </div>
+                                    <div class="account-item-value">
+                                        {{ Auth::user()->customer->district }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 account-item mb-30">
+                                    <div class="account-item-label">
+                                        Địa chỉ
+                                    </div>
+                                    <div class="account-item-value">
+                                        {{ Auth::user()->customer->address }}
+                                    </div>
+                                </div>
+
                                 <div class="col-12 btn-account-info-edit">
-                                    <a href="#">Chỉnh sửa</a>
+                                    <a href="{{ asset("tai-khoan/chinh-sua") }}">Chỉnh sửa</a>
                                 </div>
                             </div>
                         </div>
